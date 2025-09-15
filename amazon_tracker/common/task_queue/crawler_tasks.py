@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 from typing import Any
 
 from celery import Task
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from ..crawlers.apify_client import ApifyAmazonScraper
@@ -952,6 +953,30 @@ def crawl_products_batch(self, tenant_id: str = None):
 
                     processed_count += 1
 
+                except IntegrityError as e:
+                    # 处理重复ASIN的情况 - 数据库唯一约束阻止插入
+                    if "uq_product_asin_marketplace_tenant" in str(e):
+                        task_logger.info(f"Product {asin} already exists for tenant {tenant_id}, skipping creation")
+                        # 尝试更新现有产品
+                        try:
+                            existing_product = (
+                                db.query(Product)
+                                .filter(
+                                    Product.asin == asin,
+                                    Product.marketplace == MarketplaceType.AMAZON_US,
+                                    Product.tenant_id == tenant_id
+                                )
+                                .first()
+                            )
+                            if existing_product:
+                                _update_product_from_crawl_data(db, existing_product, product_data)
+                                updated_count += 1
+                                task_logger.info(f"Updated existing product {asin}")
+                        except Exception as update_e:
+                            task_logger.error(f"Failed to update existing product {asin}: {update_e}")
+                    else:
+                        task_logger.error(f"Database constraint error for product {asin}: {e}")
+                    continue
                 except Exception as e:
                     task_logger.error(f"Failed to process product {asin}: {e}")
                     continue

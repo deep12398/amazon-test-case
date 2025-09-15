@@ -90,6 +90,10 @@ dependencies = [
     "typing-extensions>=4.8.0",
     "greenlet>=3.2.4",
     "pyjwt>=2.10.1",
+    "opentelemetry-exporter-jaeger-thrift>=1.21.0",
+    "opentelemetry-instrumentation-httpx>=0.58b0",
+    "deprecated>=1.2.18",
+    "opentelemetry-exporter-otlp-proto-grpc>=1.37.0",
 ]
 
 [project.optional-dependencies]

@@ -14,7 +14,7 @@ CELERY_BEAT_SCHEDULE = {
     # 每5分钟批量抓取产品数据
     "frequent-product-update": {
         "task": "amazon_tracker.common.task_queue.crawler_tasks.crawl_products_batch",
-        "schedule": 300.0,  # 每300秒执行
+        "schedule": 3000.0,  # 每3000秒执行
         "options": {"queue": "crawler", "routing_key": "crawler"},
     },
 }
