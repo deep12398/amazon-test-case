@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: amazon-tracker-prod
+
+resources:
+  - ../../base
+
+replicas:
+  - name: user-service
+    count: 5
+  - name: core-service
+    count: 3
+  - name: crawler-service
+    count: 3
+
+images:
+  - name: amazon-tracker/user-service
+    newTag: v1.0.0
+  - name: amazon-tracker/core-service
+    newTag: v1.0.0
+  - name: amazon-tracker/crawler-service
+    newTag: v1.0.0
+
+patchesStrategicMerge:
+  - patches/resources.yaml
+  - patches/env.yaml
+
+commonLabels:
+  environment: production
+  tier: application
+
+commonAnnotations:
+  deployment.kubernetes.io/revision: "1"

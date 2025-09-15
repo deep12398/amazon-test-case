@@ -39,7 +39,6 @@ except ImportError:
 
 from ..database.connection import get_db_session
 from ..database.models.product import Product
-from .competitor_analyzer import CompetitorAnalyzer
 from .market_analyzer import MarketTrendAnalyzer
 
 logger = logging.getLogger(__name__)
@@ -74,7 +73,6 @@ class ReportGenerator:
 
     def __init__(self):
         self.logger = logging.getLogger(self.__class__.__name__)
-        self.competitor_analyzer = CompetitorAnalyzer()
         self.market_analyzer = MarketTrendAnalyzer()
 
     async def generate_report(
@@ -97,9 +95,7 @@ class ReportGenerator:
                     tenant_id, product_ids, time_period, include_charts
                 )
             elif report_type == "competitor":
-                report_data = await self._generate_competitor_report(
-                    tenant_id, product_ids, time_period, include_charts
-                )
+                raise ValueError("Competitor analysis is currently disabled")
             elif report_type == "market":
                 report_data = await self._generate_market_report(
                     tenant_id, time_period, include_charts
@@ -209,81 +205,6 @@ class ReportGenerator:
                 },
             }
 
-    async def _generate_competitor_report(
-        self,
-        tenant_id: str,
-        product_ids: Optional[list[int]],
-        time_period: str,
-        include_charts: bool,
-    ) -> dict[str, Any]:
-        """生成竞品分析报告"""
-
-        if not product_ids or len(product_ids) != 1:
-            raise ValueError("Competitor report requires exactly one product ID")
-
-        # 执行竞品分析
-        analysis = await self.competitor_analyzer.analyze_competitors(
-            product_id=product_ids[0],
-            tenant_id=tenant_id,
-            analysis_type="comprehensive",
-            auto_discover=True,
-            max_competitors=10,
-        )
-
-        sections = []
-
-        # 竞品概览章节
-        overview_section = ReportSection(
-            title="竞品分析概览",
-            content=f"分析了 {len(analysis.competitors)} 个竞争对手",
-            charts=[],
-            data={
-                "main_product": analysis.main_product.__dict__,
-                "competitor_count": len(analysis.competitors),
-                "market_position": analysis.market_position,
-            },
-        )
-        sections.append(overview_section)
-
-        # 竞争力对比章节
-        comparison_section = await self._create_competitor_comparison_section(
-            analysis, include_charts
-        )
-        sections.append(comparison_section)
-
-        # 市场定位章节
-        positioning_section = ReportSection(
-            title="市场定位分析",
-            content=f"您的产品在市场中的定位: {analysis.market_position}",
-            charts=[],
-            data={"market_position": analysis.market_position},
-        )
-        sections.append(positioning_section)
-
-        # 建议章节
-        recommendations_section = ReportSection(
-            title="改进建议",
-            content="\n".join(f"• {rec}" for rec in analysis.recommendations),
-            charts=[],
-            data={"recommendations": analysis.recommendations},
-        )
-        sections.append(recommendations_section)
-
-        return {
-            "title": f"竞品分析报告 - {analysis.main_product.title}",
-            "subtitle": f"ASIN: {analysis.main_product.asin}",
-            "sections": sections,
-            "summary": {
-                "total_competitors": len(analysis.competitors),
-                "market_position": analysis.market_position,
-                "key_insights": list(analysis.insights.keys()),
-                "recommendation_count": len(analysis.recommendations),
-            },
-            "metadata": {
-                "analysis_id": analysis.analysis_id,
-                "created_at": analysis.created_at.isoformat(),
-            },
-        }
 
     async def _generate_market_report(
         self, tenant_id: str, time_period: str, include_charts: bool
@@ -373,21 +294,8 @@ class ReportGenerator:
             tenant_id, time_period, include_charts
         )
 
-        # 如果有单个产品，添加竞品分析
-        competitor_sections = []
-        if product_ids and len(product_ids) == 1:
-            try:
-                competitor_report = await self._generate_competitor_report(
-                    tenant_id, product_ids, time_period, include_charts
-                )
-                competitor_sections = competitor_report["sections"]
-            except Exception as e:
-                self.logger.warning(f"Failed to generate competitor analysis: {e}")
-
-        # 合并所有章节
-        all_sections = (
-            product_report["sections"] + market_report["sections"] + competitor_sections
-        )
+        # 合并所有章节 (competitor analysis disabled)
+        all_sections = product_report["sections"] + market_report["sections"]
 
         return {
             "title": "综合分析报告",
@@ -672,43 +580,6 @@ class ReportGenerator:
         except Exception as e:
             return {"error": f"Chart generation failed: {e}"}
 
-    async def _create_competitor_comparison_section(
-        self, analysis, include_charts: bool
-    ) -> ReportSection:
-        """创建竞品对比章节"""
-
-        main_product = analysis.main_product
-        competitors = analysis.competitors[:5]  # 前5个竞品
-
-        content_lines = [
-            f"您的产品: {main_product.title}",
-            f"价格: ${main_product.price:.2f}" if main_product.price else "价格: N/A",
-            f"评分: {main_product.rating:.1f}/5.0"
-            if main_product.rating
-            else "评分: N/A",
-            f"排名: #{main_product.rank}" if main_product.rank else "排名: N/A",
-            "\n主要竞品:",
-        ]
-
-        for i, comp in enumerate(competitors, 1):
-            price_str = f"${comp.price:.2f}" if comp.price else "N/A"
-            rating_str = f"{comp.rating:.1f}/5.0" if comp.rating else "N/A"
-            rank_str = f"#{comp.rank}" if comp.rank else "N/A"
-
-            content_lines.append(
-                f"{i}. {comp.title[:40]}...\n"
-                f"   价格: {price_str} | 评分: {rating_str} | 排名: {rank_str} | 竞争力: {comp.competitive_score:.1f}/100"
-            )
-
-        return ReportSection(
-            title="竞品对比",
-            content="\n".join(content_lines),
-            charts=[],
-            data={
-                "main_product": main_product.__dict__,
-                "competitors": [c.__dict__ for c in competitors],
-            },
-        )
 
     async def _create_market_price_section(
         self, price_data: list[dict], include_charts: bool

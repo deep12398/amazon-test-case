@@ -20,10 +20,10 @@
 
 - **后端框架**: FastAPI + Python 3.11
 - **数据库**: Supabase (PostgreSQL) + Redis
-- **任务队列**: Celery + AWS SQS
+- **任务队列**: Celery + Redis (消息代理)
 - **网关**: APISIX + etcd
 - **AI**: LangChain + OpenAI
-- **监控**: OpenTelemetry + Prometheus + Grafana
+- **监控**: OpenTelemetry + Jaeger + Prometheus + Grafana
 - **部署**: Docker + Docker Compose
 
 ## 🚀 快速开始
@@ -121,8 +121,8 @@ make test-integration # 集成测试
 
 # 开发服务
 make dev-user      # 启动用户服务 (port: 8001)
-make dev-core      # 启动核心服务 (port: 8002)
-make dev-crawler   # 启动爬虫服务 (port: 8003)
+make dev-core      # 启动核心服务 (port: 8003)
+make dev-crawler   # 启动爬虫服务 (port: 8002)
 
 # Docker操作
 make docker-up     # 启动开发环境
@@ -141,82 +141,30 @@ make db-seed       # 填充种子数据
 |------|------|------|------|
 | APISIX网关 | 9080 | API网关 | - |
 | 用户服务 | 8001 | 认证管理 | http://localhost:8001/docs |
-| 核心服务 | 8002 | 产品分析 | http://localhost:8002/docs |
-| 爬虫服务 | 8003 | 数据抓取 | http://localhost:8003/docs |
-| PostgreSQL | 5432 | 主数据库 | - |
-| Redis | 6379 | 缓存存储 | - |
+| 核心服务 | 8003 | 产品分析 | http://localhost:8003/docs |
+| 爬虫服务 | 8002 | 数据抓取 | http://localhost:8002/docs |
+| PostgreSQL | 5432 | 主数据库 (Supabase) | - |
+| Redis | 6379 | 缓存+消息队列 | - |
+| Jaeger | 16686 | 分布式追踪 | http://localhost:16686 |
 | Prometheus | 9090 | 监控指标 | http://localhost:9090 |
 | Grafana | 3000 | 监控面板 | http://localhost:3000 |
 
 ## 🔐 环境配置
 
-复制 `.env.example` 到 `.env` 并填写以下关键配置：
+复制 `.env.example` 到 根目录下即可使用。
 
-```bash
-# API密钥
-OPENAI_API_KEY=sk-your-key-here
-APIFY_API_TOKEN=your-token-here
-
-# 数据库
-DATABASE_URL=postgresql://...
-REDIS_URL=redis://localhost:6379
-
-# 安全
-JWT_SECRET=your-secret-key
-```
 
 ## 🏗️ 架构设计
 
 系统采用微服务架构，支持多租户SaaS模式：
 
-- **API网关层**: APISIX提供统一入口和租户路由
-- **微服务层**: 用户管理、核心业务、爬虫服务
-- **数据存储层**: PostgreSQL主数据库 + Redis缓存
-- **任务队列层**: Celery + SQS处理异步任务
-- **监控观测层**: 完整的监控和追踪体系
+- **API网关层**: APISIX提供统一入口、租户路由、认证鉴权、流量控制
+- **微服务层**: 用户管理(8001)、核心业务(8003)、爬虫服务(8002)
+- **数据存储层**: Supabase PostgreSQL主数据库 + Redis缓存
+- **任务队列层**: Celery + Redis处理异步任务和消息传递
+- **监控观测层**: OpenTelemetry + Jaeger分布式追踪 + Prometheus指标 + Grafana可视化
 
 详细架构文档：[ARCHITECTURE.md](ARCHITECTURE.md)
-
-## 🗺️ 开发进度
-
-项目分为5个阶段，目前完成情况：
-
-### ✅ **Phase 1: 项目基础设施** (已完成)
-- ✅ 项目目录结构和开发环境
-- ✅ UV虚拟环境和依赖管理
-- ✅ Docker开发环境 (PostgreSQL, Redis, APISIX等)
-- ✅ Git配置和代码质量工具
-- ✅ Alembic数据库迁移
-
-### ✅ **Phase 2: 用户认证系统** (已完成)
-- ✅ 多租户用户数据模型
-- ✅ JWT认证机制 (访问+刷新令牌)
-- ✅ 用户注册、登录、权限管理API
-- ✅ RBAC权限控制系统
-- ✅ API Key认证
-- ✅ APISIX网关认证配置
-- ✅ 完整认证系统测试
-
-### 🚧 **Phase 3: 数据抓取服务** (进行中)
-- [ ] Apify爬虫集成
-- [ ] Amazon产品数据抓取
-- [ ] 数据清洗和验证
-- [ ] 异步任务队列
-- [ ] 爬虫调度和监控
-
-### 📅 **Phase 4: 核心业务功能** (计划中)
-- [ ] 产品管理系统
-- [ ] 竞争对手分析
-- [ ] AI优化建议
-- [ ] 分析报告生成
-
-### 📅 **Phase 5: 监控与部署** (计划中)
-- [ ] 完整监控体系
-- [ ] 生产环境部署
-- [ ] 性能优化
-- [ ] 文档完善
-
-详细实施计划：[IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md)
 
 ## 🔐 认证系统使用
 
@@ -288,8 +236,8 @@ open htmlcov/index.html
 
 每个服务的文档地址：
 - 用户服务: http://localhost:8001/docs
-- 核心服务: http://localhost:8002/docs
-- 爬虫服务: http://localhost:8003/docs
+- 核心服务: http://localhost:8003/docs
+- 爬虫服务: http://localhost:8002/docs
 
 ## 🚀 部署
 

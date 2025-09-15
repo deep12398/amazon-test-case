@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-service
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: core-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: core-service
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1000m"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crawler-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: crawler-service
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
