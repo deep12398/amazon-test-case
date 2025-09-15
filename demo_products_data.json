@@ -1,0 +1,231 @@
+{
+  "summary": {
+    "total_products": 10,
+    "successful_crawls": 10,
+    "failed_crawls": 0,
+    "success_rate": 100.0,
+    "generated_at": "2025-09-12 15:30:00"
+  },
+  "products": [
+    {
+      "asin": "B09XS7JWHH",
+      "title": "Sony WH-1000XM5 Wireless Industry Leading Noise Canceling Headphones with Auto Noise Canceling Optimizer, Crystal Clear Hands-Free Calling, and Alexa Voice Control, Silver",
+      "brand": "Sony",
+      "price": 349.99,
+      "rating": 4.4,
+      "review_count": 15832,
+      "rank": 42,
+      "category": "bluetooth-headphones",
+      "availability": "In Stock",
+      "image_url": "https://m.media-amazon.com/images/I/61+bthl5OjL._AC_SL1500_.jpg",
+      "features": [
+        "Industry Leading Noise Cancelation",
+        "Incredible sound quality with V1 processor",
+        "Crystal clear hands-free calling",
+        "Up to 30-hour battery life",
+        "Quick Charge - 3 min charge for 3 hours of playback"
+      ],
+      "estimated_price": 300,
+      "crawl_success": true,
+      "crawl_time": 1726154400
+    },
+    {
+      "asin": "B0BDHWDR12",
+      "title": "Apple AirPods Pro (2nd Generation) with MagSafe Case (USB‑C) ​​​​​​​",
+      "brand": "Apple",
+      "price": 249.00,
+      "rating": 4.3,
+      "review_count": 73891,
+      "rank": 8,
+      "category": "bluetooth-earbuds",
+      "availability": "In Stock",
+      "image_url": "https://m.media-amazon.com/images/I/61f1YfTkTdL._AC_SL1500_.jpg",
+      "features": [
+        "Active Noise Cancellation",
+        "Adaptive Transparency",
+        "Personalized Spatial Audio",
+        "MagSafe Charging Case",
+        "Up to 6 hours listening time"
+      ],
+      "estimated_price": 250,
+      "crawl_success": true,
+      "crawl_time": 1726154460
+    },
+    {
+      "asin": "B098FKXT8L",
+      "title": "Bose QuietComfort 45 Wireless Bluetooth Noise Cancelling Headphones, Midnight Blue - Limited Edition",
+      "brand": "Bose",
+      "price": 279.00,
+      "rating": 4.3,
+      "review_count": 18764,
+      "rank": 67,
+      "category": "bluetooth-headphones",
+      "availability": "In Stock",
+      "image_url": "https://m.media-amazon.com/images/I/81+jNVOUsJL._AC_SL1500_.jpg",
+      "features": [
+        "World-class noise cancelling",
+        "TriPort acoustic architecture",
+        "EQ control in Bose Music app",
+        "22-hour battery life",
+        "Quick 15-minute charge"
+      ],
+      "estimated_price": 280,
+      "crawl_success": true,
+      "crawl_time": 1726154520
+    },
+    {
+      "asin": "B08WM3LMJF",
+      "title": "JBL Tune 510BT Wireless On-Ear Headphones with Purebass Sound - White",
+      "brand": "JBL",
+      "price": 39.95,
+      "rating": 4.2,
+      "review_count": 45632,
+      "rank": 156,
+      "category": "bluetooth-headphones",
+      "availability": "In Stock",
+      "image_url": "https://m.media-amazon.com/images/I/61XqBuLLmJL._AC_SL1500_.jpg",
+      "features": [
+        "JBL Pure Bass Sound",
+        "Wireless Bluetooth streaming",
+        "40H battery life",
+        "Voice Assistant compatible",
+        "Foldable design"
+      ],
+      "estimated_price": 40,
+      "crawl_success": true,
+      "crawl_time": 1726154580
+    },
+    {
+      "asin": "B07NM3RSRQ",
+      "title": "Anker Soundcore Life Q20 Hybrid Active Noise Cancelling Headphones, Wireless Over Ear Bluetooth Headphones, 40H Playtime, Hi-Res Audio, Deep Bass, Memory Foam Ear Cups, for Travel, Home Office",
+      "brand": "Anker",
+      "price": 59.99,
+      "rating": 4.4,
+      "review_count": 97854,
+      "rank": 89,
+      "category": "bluetooth-headphones",
+      "availability": "In Stock", 
+      "image_url": "https://m.media-amazon.com/images/I/71wF7YDIQkL._AC_SL1500_.jpg",
+      "features": [
+        "Hybrid Active Noise Cancelling",
+        "Incredible Sound Loved by 20 Million+ People",
+        "40-Hour Playtime",
+        "Hi-Res Audio",
+        "Memory Foam Ear Cups"
+      ],
+      "estimated_price": 60,
+      "crawl_success": true,
+      "crawl_time": 1726154640
+    },
+    {
+      "asin": "B075G56CDY",
+      "title": "Beats Studio3 Wireless Noise Cancelling Over-Ear Headphones - Apple W1 Chip, Class 1 Bluetooth, Active Noise Cancelling, 22 Hours Of Listening Time - Matte Black",
+      "brand": "Beats",
+      "price": 179.95,
+      "rating": 4.4,
+      "review_count": 28764,
+      "rank": 134,
+      "category": "bluetooth-headphones",
+      "availability": "In Stock",
+      "image_url": "https://m.media-amazon.com/images/I/71f5Eu5lJdL._AC_SL1500_.jpg",
+      "features": [
+        "High-performance wireless noise cancelling headphones",
+        "Apple W1 chip and industry-leading Bluetooth technology",
+        "Pure adaptive noise cancelling (Pure ANC) actively blocks external noise",
+        "Real-time Audio calibration preserves a premium listening experience",
+        "Up to 22 hours of battery life enables full-featured all-day wireless playback"
+      ],
+      "estimated_price": 200,
+      "crawl_success": true,
+      "crawl_time": 1726154700
+    },
+    {
+      "asin": "B0B8QZ9FYB",
+      "title": "Sennheiser Momentum 4 Wireless Headphones - Bluetooth Over-Ear Headphones with Adaptive Noise Cancellation, Smart Pause, 60-Hour Battery Life & Sound Personalization via Smart Control App, Black",
+      "brand": "Sennheiser",
+      "price": 349.95,
+      "rating": 4.2,
+      "review_count": 2847,
+      "rank": 298,
+      "category": "bluetooth-headphones",
+      "availability": "In Stock",
+      "image_url": "https://m.media-amazon.com/images/I/61GjIjC7+4L._AC_SL1500_.jpg",
+      "features": [
+        "Adaptive Noise Cancellation that automatically adapts to your surroundings",
+        "Exceptional 60-hour battery life for extended listening",
+        "Superior sound with Sennheiser signature sound",
+        "Smart Pause automatically pauses playback",
+        "Sound personalization via Smart Control App"
+      ],
+      "estimated_price": 350,
+      "crawl_success": true,
+      "crawl_time": 1726154760
+    },
+    {
+      "asin": "B07RGZ5NKS",
+      "title": "TOZO T6 True Wireless Earbuds Bluetooth Headphones Touch Control with Wireless Charging Case IPX6 Waterproof Stereo Earphones in-Ear Built-in Mic Headset Premium Deep Bass for Sport Black",
+      "brand": "TOZO",
+      "price": 29.99,
+      "rating": 4.1,
+      "review_count": 156783,
+      "rank": 23,
+      "category": "bluetooth-earbuds",
+      "availability": "In Stock",
+      "image_url": "https://m.media-amazon.com/images/I/71Dt38tsJuL._AC_SL1500_.jpg",
+      "features": [
+        "Smart Touch Control",
+        "Wireless Charging Case",
+        "IPX6 Waterproof",
+        "Premium Deep Bass",
+        "One-Step Pairing"
+      ],
+      "estimated_price": 30,
+      "crawl_success": true,
+      "crawl_time": 1726154820
+    },
+    {
+      "asin": "B0B2SH4CN6",
+      "title": "Samsung Galaxy Buds2 Pro True Wireless Bluetooth Earbuds, Noise Cancelling, Hi-Fi Sound, 360 Audio, Comfort Fit, HD Voice, Conversation Mode, IPX7 Water Resistant, Graphite, Android & iPhone",
+      "brand": "Samsung",
+      "price": 149.99,
+      "rating": 4.2,
+      "review_count": 12764,
+      "rank": 178,
+      "category": "bluetooth-earbuds",
+      "availability": "In Stock",
+      "image_url": "https://m.media-amazon.com/images/I/61Ay3qEBrQL._AC_SL1500_.jpg",
+      "features": [
+        "Intelligent Active Noise Cancellation",
+        "Hi-Fi Sound quality with 2-way speakers",
+        "360 Audio for immersive sound",
+        "Comfortable, secure fit",
+        "HD Voice & Conversation Mode"
+      ],
+      "estimated_price": 150,
+      "crawl_success": true,
+      "crawl_time": 1726154880
+    },
+    {
+      "asin": "B07Q2T2CKG",
+      "title": "Bose Noise Cancelling Headphones 700, Bluetooth, Over-Ear Wireless Headphones with Built-In Microphone for Clear Calls & Alexa Voice Control, Black",
+      "brand": "Bose",
+      "price": 299.00,
+      "rating": 4.3,
+      "review_count": 47832,
+      "rank": 89,
+      "category": "bluetooth-headphones",
+      "availability": "In Stock",
+      "image_url": "https://m.media-amazon.com/images/I/71xF2jpIQfL._AC_SL1500_.jpg",
+      "features": [
+        "11 levels of active noise cancelling",
+        "Astonishing sound, balance, and performance",
+        "Unrivaled microphone system",
+        "20-hour battery life",
+        "Bose AR enabled"
+      ],
+      "estimated_price": 320,
+      "crawl_success": true,
+      "crawl_time": 1726154940
+    }
+  ]
+}

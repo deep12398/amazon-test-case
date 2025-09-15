@@ -1,0 +1,1143 @@
+{
+  "summary": {
+    "total_products": 92,
+    "products_with_bsr": 87,
+    "products_without_bsr": 5,
+    "bsr_availability_rate": 94.56521739130434
+  },
+  "detailed_results": {
+    "B09G9FPHY6": {
+      "title": "Apple iPad (9th Generation): with A13 Bionic chip,",
+      "bsr_field_exists": true,
+      "bsr_data": null,
+      "bsr_is_null": true,
+      "bsr_is_empty": false
+    },
+    "B08L5NP6NG": {
+      "title": "Apple MagSafe Charger - Wireless Charger with Fast",
+      "bsr_field_exists": true,
+      "bsr_data": null,
+      "bsr_is_null": true,
+      "bsr_is_empty": false
+    },
+    "B07ZPKN6YR": {
+      "title": "Apple iPhone 11, 64GB, Black - Unlocked (Renewed)",
+      "bsr_field_exists": true,
+      "bsr_data": [
+        {
+          "rank": 329,
+          "category": "Cell Phones & Accessories",
+          "url": "https://www.amazon.com/gp/bestsellers/wireless/ref=pd_zg_ts_wireless"
+        },
+        {
+          "rank": 329,
+          "category": "Cell Phones & Accessories",
+          "url": "https://www.amazon.com/gp/bestsellers/wireless/ref=pd_zg_ts_wireless"
+        },
+        {
+          "rank": 4,
+          "category": "Renewed Smartphones",
+          "url": "https://www.amazon.com/gp/bestsellers/amazon-renewed/17871142011/ref=pd_zg_hrsr_amazon-renewed"
+        },
+        {
+          "rank": 4,
+          "category": "Renewed Smartphones",
+          "url": "https://www.amazon.com/gp/bestsellers/amazon-renewed/17871142011/ref=pd_zg_hrsr_amazon-renewed"
+        },
+        {
+          "rank": 6,
+          "category": "Cell Phones",
+          "url": "https://www.amazon.com/gp/bestsellers/wireless/7072561011/ref=pd_zg_hrsr_wireless"
+        },
+        {
+          "rank": 6,
+          "category": "Cell Phones",
+          "url": "https://www.amazon.com/gp/bestsellers/wireless/7072561011/ref=pd_zg_hrsr_wireless"
+        }
+      ],
+      "bsr_is_null": false,
+      "bsr_is_empty": false
+    },
+    "B0756CYWWD": {
+      "title": "Bose QuietComfort 35 II Wireless Bluetooth Headpho",
+      "bsr_field_exists": true,
+      "bsr_data": [
+        {
+          "rank": 51071,
+          "category": "Electronics",
+          "url": "https://www.amazon.com/gp/bestsellers/electronics/ref=pd_zg_ts_electronics"
+        },
+        {
+          "rank": 51071,
+          "category": "Electronics",
+          "url": "https://www.amazon.com/gp/bestsellers/electronics/ref=pd_zg_ts_electronics"
+        },
+        {
+          "rank": 1728,
+          "category": "Over-Ear Headphones",
+          "url": "https://www.amazon.com/gp/bestsellers/electronics/12097479011/ref=pd_zg_hrsr_electronics"
+        },
+        {
+          "rank": 1728,
+          "category": "Over-Ear Headphones",
+          "url": "https://www.amazon.com/gp/bestsellers/electronics/12097479011/ref=pd_zg_hrsr_electronics"
+        }
+      ],
+      "bsr_is_null": false,
+      "bsr_is_empty": false
+    }
+  },
+  "raw_sample": {
+    "title": "Apple iPad (9th Generation): with A13 Bionic chip, 10.2-inch Retina Display, 64GB, Wi-Fi, 12MP front/8MP Back Camera, Touch ID, All-Day Battery Life – Space Gray",
+    "url": "https://www.amazon.com/gp/product/B09G9FPHY6?smid=ALAQLAKJ574UN",
+    "asin": "B09G9FPHY6",
+    "originalAsin": "B09G9FPHY6",
+    "price": {
+      "value": 353.25,
+      "currency": "$"
+    },
+    "inStock": false,
+    "inStockText": "",
+    "listPrice": null,
+    "brand": "Apple",
+    "author": null,
+    "shippingPrice": null,
+    "stars": 4.8,
+    "starsBreakdown": {
+      "5star": 0.87,
+      "4star": 0.09,
+      "3star": 0.02,
+      "2star": 0,
+      "1star": 0.02
+    },
+    "reviewsCount": 76720,
+    "answeredQuestions": null,
+    "breadCrumbs": "",
+    "videosCount": 1,
+    "visitStoreLink": {
+      "text": "Visit the Apple Store",
+      "url": "https://www.amazon.com/stores/Apple/page/77D9E1F7-0337-4282-9DB6-B6B8FB2DC98D?is_byline_deeplink=true&deeplink=203FCFDF-1254-461E-9A68-F8813C0E0A64&redirect_store_id=77D9E1F7-0337-4282-9DB6-B6B8FB2DC98D&lp_asin=B09G9FPHY6&ref_=ast_bln"
+    },
+    "thumbnailImage": "https://m.media-amazon.com/images/I/61NGnpjoRDL.__AC_SY445_SX342_QL70_FMwebp_.jpg",
+    "galleryThumbnails": [
+      "https://m.media-amazon.com/images/I/31+KEhn35VL._AC_SR38.jpg",
+      "https://m.media-amazon.com/images/I/41A67yeDecL._AC_SR38.jpg",
+      "https://m.media-amazon.com/images/I/31zWSAS-EAL._AC_SR38.jpg",
+      "https://m.media-amazon.com/images/I/31wFxVqwUsL._AC_SR38.jpg",
+      "https://m.media-amazon.com/images/I/31-K+HVOv9L._AC_SR38.jpg"
+    ],
+    "highResolutionImages": [
+      "https://m.media-amazon.com/images/I/61NGnpjoRDL._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/6127DyihDEL._AC_SL1200_.jpg",
+      "https://m.media-amazon.com/images/I/61JamrBdMSL._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/81+h4mcrL0L._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/61GjAak00vL._AC_SL1500_.jpg"
+    ],
+    "importantInformation": null,
+    "sustainabilityFeatures": [
+      {
+        "title": "Energy efficiency",
+        "description": "Conserves energy compared to similar products.",
+        "certifiedBy": [
+          {
+            "name": "EPEAT",
+            "image": "https://m.media-amazon.com/images/I/21OXy0oJ8VL._SS144_.png",
+            "description": "EPEAT certifies electronic products based on sustainability impacts across their life cycle including requirements for energy efficiency and end-of-life management. An EPEAT registered product can also meet optional more ambitious criteria including reduction of fluorinated greenhouse gases (F-GHGs). Products meeting 50% - 74% optional criteria are 'Silver' and those meeting 75% or more are 'Gold'.Learn more about this certification",
+            "url": "https://globalelectronicscouncil.org/ecolabels/",
+            "data": [
+              {
+                "key": "Certification Level",
+                "value": "GOLD"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "description": null,
+    "features": [
+      "WHY IPAD — All the essentials in the most affordable iPad, with a beautiful 10.2-inch Retina display, powerful A13 Bionic chip, and an Ultra Wide front camera with Center Stage. Work, play, create, learn, stay connected, and more.",
+      "IPADOS + APPS — iPadOS makes iPad more productive, intuitive, and versatile. With iPadOS, run multiple apps at once, use Apple Pencil to write in any text field with Scribble, and edit and share photos. iPad comes with essential apps like Safari, Messages, and Keynote, with over a million more apps available on the App Store.",
+      "FAST WI-FI CONNECTIVITY — Fast Wi-Fi keeps you connected at home, work, school, or wherever you go with your iPad.",
+      "PERFORMANCE AND STORAGE — The A13 Bionic chip gives you the graphics performance you need. And with all-day battery life, iPad is perfect for playing immersive games and more. Choose from 64GB or 256GB storage options.",
+      "APPLE PENCIL AND SMART KEYBOARD — Apple Pencil (1st generation) transforms iPad into an immersive drawing canvas and the world’s best note‑taking device. The Smart Keyboard features a comfortable typing experience and folds into a slim, lightweight cover for protection. Accessories sold separately",
+      "10.2-INCH RETINA DISPLAY — With incredible detail and vivid colors, it’s perfect for watching movies or drawing your next masterpiece. True Tone adjusts the display to the color temperature of the room to make viewing comfortable in any light.",
+      "UNLOCK AND PAY WITH TOUCH ID — Touch ID is built in, so you can use your fingerprint to unlock your iPad, sign in to apps, and make payments securely with Apple Pay.",
+      "FRONT AND BACK CAMERAS — iPad features a 12MP Ultra Wide front camera that supports Center Stage for videoconferencing and selfies. The 8MP Wide back camera is perfect for capturing photos, 1080p HD video, and scanning documents.",
+      "LEGAL DISCLAIMERS — This is a summary of the main product features."
+    ],
+    "attributes": [
+      {
+        "key": "Product Dimensions",
+        "value": "9.87 x 6.85 x 0.3 inches"
+      },
+      {
+        "key": "Item Weight",
+        "value": "1.07 pounds"
+      },
+      {
+        "key": "Manufacturer",
+        "value": "Apple"
+      },
+      {
+        "key": "ASIN",
+        "value": "B09G9FPHY6"
+      },
+      {
+        "key": "Item model number",
+        "value": "MK2K3LL/A"
+      },
+      {
+        "key": "Batteries",
+        "value": "1 Lithium Ion batteries required. (included)"
+      },
+      {
+        "key": "Date First Available",
+        "value": "September 14, 2021"
+      }
+    ],
+    "productOverview": [
+      {
+        "key": "Brand",
+        "value": "Apple"
+      },
+      {
+        "key": "Model Name",
+        "value": "iPad"
+      },
+      {
+        "key": "Memory Storage Capacity",
+        "value": "64 GB"
+      },
+      {
+        "key": "Screen Size",
+        "value": "10.2 Inches"
+      },
+      {
+        "key": "Display Resolution Maximum",
+        "value": "2160x1620 Pixels"
+      }
+    ],
+    "variantAsins": [
+      "B09G91TLNJ",
+      "B09G9GLLRN",
+      "B09G96TFF7",
+      "B09G9CJM1Z",
+      "B09G9FPHY6",
+      "B09G97CV82",
+      "B09G9LD3HC",
+      "B09G96P9RM"
+    ],
+    "variantDetails": [
+      {
+        "name": "WiFi 256GB Silver Without AppleCare+",
+        "thumbnail": "https://m.media-amazon.com/images/I/31Sl-1fQs9L._AC_SR38.jpg",
+        "images": [
+          "https://m.media-amazon.com/images/I/61PnHlc0HCL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/61LQHKqQTEL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/81h2hRZ2JYL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/81kHk09wgYL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/81tumGZnBpL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/61uTpa5c20L._AC_SL1500_.jpg"
+        ],
+        "asin": "B09G91TLNJ",
+        "price": null
+      },
+      {
+        "name": "WiFi + Cellular 64 GB Space Gray Without AppleCare+",
+        "thumbnail": "https://m.media-amazon.com/images/I/3168GYOmazL._AC_SR38.jpg",
+        "images": [
+          "https://m.media-amazon.com/images/I/61con7QLTrL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/61nDgufXv+L._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/81ymODhZBAL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/51qYvVHWrrL._AC_SL1200_.jpg",
+          "https://m.media-amazon.com/images/I/81jlAhquKyL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/81W-ZOpFdQL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/617VAB32D3L._AC_SL1500_.jpg"
+        ],
+        "asin": "B09G9GLLRN",
+        "price": null
+      },
+      {
+        "name": "WiFi 256GB Space Gray Without AppleCare+",
+        "thumbnail": "https://m.media-amazon.com/images/I/31+KEhn35VL._AC_SR38.jpg",
+        "images": [
+          "https://m.media-amazon.com/images/I/61NGnpjoRDL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/61JamrBdMSL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/81+h4mcrL0L._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/81kHk09wgYL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/81tumGZnBpL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/61GjAak00vL._AC_SL1500_.jpg"
+        ],
+        "asin": "B09G96TFF7",
+        "price": null
+      },
+      {
+        "name": "WiFi 64 GB Silver Without AppleCare+",
+        "thumbnail": "https://m.media-amazon.com/images/I/31Sl-1fQs9L._AC_SR38.jpg",
+        "images": [
+          "https://m.media-amazon.com/images/I/61PnHlc0HCL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/61LQHKqQTEL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/81h2hRZ2JYL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/81kHk09wgYL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/81tumGZnBpL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/61uTpa5c20L._AC_SL1500_.jpg"
+        ],
+        "asin": "B09G9CJM1Z",
+        "price": null
+      },
+      {
+        "name": "WiFi 64 GB Space Gray Without AppleCare+",
+        "thumbnail": "https://m.media-amazon.com/images/I/31+KEhn35VL._AC_SR38.jpg",
+        "images": [
+          "https://m.media-amazon.com/images/I/61NGnpjoRDL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/6127DyihDEL._AC_SL1200_.jpg",
+          "https://m.media-amazon.com/images/I/61JamrBdMSL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/81+h4mcrL0L._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/61GjAak00vL._AC_SL1500_.jpg"
+        ],
+        "asin": "B09G9FPHY6",
+        "price": null
+      },
+      {
+        "name": "WiFi + Cellular 256GB Silver Without AppleCare+",
+        "thumbnail": "https://m.media-amazon.com/images/I/31EEceRfixL._AC_SR38.jpg",
+        "images": [
+          "https://m.media-amazon.com/images/I/61y9K3gDOqL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/61dBM-taNhL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/816hSwqPncL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/51xZT39GtEL._AC_SL1200_.jpg",
+          "https://m.media-amazon.com/images/I/81jlAhquKyL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/81M5d1mu3GL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/61OrLqQgHNL._AC_SL1500_.jpg"
+        ],
+        "asin": "B09G97CV82",
+        "price": null
+      },
+      {
+        "name": "WiFi + Cellular 64 GB Silver Without AppleCare+",
+        "thumbnail": "https://m.media-amazon.com/images/I/31EEceRfixL._AC_SR38.jpg",
+        "images": [
+          "https://m.media-amazon.com/images/I/61y9K3gDOqL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/61dBM-taNhL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/816hSwqPncL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/51xZT39GtEL._AC_SL1200_.jpg",
+          "https://m.media-amazon.com/images/I/81jlAhquKyL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/81M5d1mu3GL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/61OrLqQgHNL._AC_SL1500_.jpg"
+        ],
+        "asin": "B09G9LD3HC",
+        "price": null
+      },
+      {
+        "name": "WiFi + Cellular 256GB Space Gray Without AppleCare+",
+        "thumbnail": "https://m.media-amazon.com/images/I/3168GYOmazL._AC_SR38.jpg",
+        "images": [
+          "https://m.media-amazon.com/images/I/61con7QLTrL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/61nDgufXv+L._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/81ymODhZBAL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/51qYvVHWrrL._AC_SL1200_.jpg",
+          "https://m.media-amazon.com/images/I/81jlAhquKyL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/81W-ZOpFdQL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/617VAB32D3L._AC_SL1500_.jpg"
+        ],
+        "asin": "B09G96P9RM",
+        "price": null
+      }
+    ],
+    "reviewsLink": "https://www.amazon.com/product-reviews/B09G9FPHY6",
+    "hasReviews": true,
+    "delivery": null,
+    "fastestDelivery": null,
+    "returnPolicy": null,
+    "support": null,
+    "variantAttributes": [
+      {
+        "key": "Style",
+        "value": "WiFi"
+      },
+      {
+        "key": "Size",
+        "value": "64 GB"
+      },
+      {
+        "key": "Color",
+        "value": "Space Gray"
+      }
+    ],
+    "manufacturerAttributes": [],
+    "seller": {
+      "name": "6ave",
+      "id": "ALAQLAKJ574UN",
+      "url": "https://www.amazon.com/gp/aag/main?ie=UTF8&seller=ALAQLAKJ574UN&isAmazonFulfilled=0&asin=B09G9FPHY6&ref_=olp_merch_name_1",
+      "reviewsCount": 114492,
+      "averageRating": 4.95
+    },
+    "bestsellerRanks": null,
+    "isAmazonChoice": false,
+    "amazonChoiceText": null,
+    "bookDescription": null,
+    "priceRange": null,
+    "aPlusContent": null,
+    "brandStory": null,
+    "productComparison": null,
+    "aiReviewsSummary": {
+      "text": "Customers find the iPad reliable and easy to use, with an intuitive user interface that's particularly suitable for older users. The device features a 10.2-inch Retina display that's vivid and sharp, and they appreciate its good size that's big enough for productivity. Customers praise its speed, with one noting no delay while writing, and consider it good value for money. Battery life receives mixed reviews - while some find it amazing, others report it takes forever to charge.",
+      "keywords": [
+        {
+          "name": "Ipad quality",
+          "sentiment": "positive",
+          "text": "Customers find the iPad to be of excellent quality, with one customer noting it's great for kids.",
+          "customersMentionedCount": {
+            "total": 1509,
+            "positive": 1434,
+            "negative": 75
+          },
+          "partialReviews": [
+            {
+              "text": "Great product! Nice size screen, great storage space",
+              "highlightedPart": "Great product",
+              "url": "https://www.amazon.com/gp/customer-reviews/R2KKOASVILOTXL"
+            },
+            {
+              "text": "...Connectivity is easy as any iPhone. Great iPad.",
+              "highlightedPart": "Great iPad",
+              "url": "https://www.amazon.com/gp/customer-reviews/R35NWU0JQPA7J1"
+            },
+            {
+              "text": "Good product. Its been working fine for over 2 years now, apps still run fine and no lag or failure of any kind.",
+              "highlightedPart": "Good product",
+              "url": "https://www.amazon.com/gp/customer-reviews/R3OZCODW3FQ8AG"
+            },
+            {
+              "text": "This is a great product. I have not experienced any technical issues. Screen is very clear",
+              "highlightedPart": "great product",
+              "url": "https://www.amazon.com/gp/customer-reviews/RFEDQ5GVFDOTB"
+            }
+          ]
+        },
+        {
+          "name": "Works well",
+          "sentiment": "positive",
+          "text": "Customers find that the tablet works well, getting the job done reliably.",
+          "customersMentionedCount": {
+            "total": 1276,
+            "positive": 1020,
+            "negative": 256
+          },
+          "partialReviews": [
+            {
+              "text": "Works great",
+              "highlightedPart": "Works great",
+              "url": "https://www.amazon.com/gp/customer-reviews/R1TWK5GDR7387Y"
+            },
+            {
+              "text": "works great! no problems",
+              "highlightedPart": "works great",
+              "url": "https://www.amazon.com/gp/customer-reviews/R3Q705GZU12S24"
+            },
+            {
+              "text": "Works well.",
+              "highlightedPart": "Works well",
+              "url": "https://www.amazon.com/gp/customer-reviews/R3ENSSKTI3KAJR"
+            },
+            {
+              "text": "Stopped working and took it to Apple they wanted to charge me $249 to fix it why would I pay that when it’s only $200 on here?...",
+              "highlightedPart": "Stopped working",
+              "url": "https://www.amazon.com/gp/customer-reviews/R22VH8X6ZIB6ZU"
+            }
+          ]
+        },
+        {
+          "name": "Value for money",
+          "sentiment": "positive",
+          "text": "Customers find the tablet offers good value for money.",
+          "customersMentionedCount": {
+            "total": 1272,
+            "positive": 1213,
+            "negative": 59
+          },
+          "partialReviews": [
+            {
+              "text": "Great price",
+              "highlightedPart": "Great price",
+              "url": "https://www.amazon.com/gp/customer-reviews/RF983SJWYX2U5"
+            },
+            {
+              "text": "...works very well, looks shnazzy, serves all our purposes, and was a great price.",
+              "highlightedPart": "great price",
+              "url": "https://www.amazon.com/gp/customer-reviews/R252N4LUDXS3UG"
+            },
+            {
+              "text": "Transitioned from 8th generation. Works just as expected. Great value!",
+              "highlightedPart": "Great value",
+              "url": "https://www.amazon.com/gp/customer-reviews/R2U2T4N02F30Q"
+            },
+            {
+              "text": "Love this ipad. Use it everyday. Lots of memory. High quality. Good price. very pleased",
+              "highlightedPart": "Good price",
+              "url": "https://www.amazon.com/gp/customer-reviews/RKPD7JJUPYH8C"
+            }
+          ]
+        },
+        {
+          "name": "Ease of use",
+          "sentiment": "positive",
+          "text": "Customers find the tablet easy to use, with an intuitive user interface that takes about two hours to set up.",
+          "customersMentionedCount": {
+            "total": 554,
+            "positive": 495,
+            "negative": 59
+          },
+          "partialReviews": [
+            {
+              "text": "My wife loves it! Lots of storage, easy to use. Perfect for our Apple ecosystem",
+              "highlightedPart": "easy to use",
+              "url": "https://www.amazon.com/gp/customer-reviews/R1ZEGW7A9AJ2ZE"
+            },
+            {
+              "text": "...Easy to use, easy to take with me, and overall a great purchase.",
+              "highlightedPart": "Easy to use",
+              "url": "https://www.amazon.com/gp/customer-reviews/R20WAHJU4B3FEN"
+            },
+            {
+              "text": "...I've had no negative issues with it at all, and it was easy to set up. It's also great to take with me for traveling. Very lightweight....",
+              "highlightedPart": "easy to set up",
+              "url": "https://www.amazon.com/gp/customer-reviews/R342VIKAAUH7MP"
+            },
+            {
+              "text": "Product arrived in a timely fashion and in good condition. Easy to set up. Comfortable and fairly easy to use....",
+              "highlightedPart": "Easy to set up",
+              "url": "https://www.amazon.com/gp/customer-reviews/R2F7HO78ZTCOMH"
+            }
+          ]
+        },
+        {
+          "name": "Speed",
+          "sentiment": "positive",
+          "text": "Customers praise the tablet's speed, describing it as super fast and responsive, with one customer noting there's no delay while writing.",
+          "customersMentionedCount": {
+            "total": 463,
+            "positive": 409,
+            "negative": 54
+          },
+          "partialReviews": [
+            {
+              "text": "...The battery life is excellent, lasting throughout the day. The device is fast and responsive, handling all my tasks with ease....",
+              "highlightedPart": "fast",
+              "url": "https://www.amazon.com/gp/customer-reviews/R3V58HSWYC706L"
+            },
+            {
+              "text": "Bought for my wife and she loves it. Fast and plenty of memory since Apple apps are not bulky. Price was great. She is happy with the battery life.",
+              "highlightedPart": "Fast",
+              "url": "https://www.amazon.com/gp/customer-reviews/RV7Q2Q8GRJ58W"
+            },
+            {
+              "text": "...is a powerhouse device that sets a new standard for versatility, performance, and portability....",
+              "highlightedPart": "performance",
+              "url": "https://www.amazon.com/gp/customer-reviews/R3198ZY8AZK5CH"
+            },
+            {
+              "text": "...This 9th generation edition is lighter, faster and much cooler looking. Always fun to unbox an Apple product!...",
+              "highlightedPart": "faster",
+              "url": "https://www.amazon.com/gp/customer-reviews/R2RQJ5AS63L12U"
+            }
+          ]
+        },
+        {
+          "name": "Screen quality",
+          "sentiment": "positive",
+          "text": "Customers praise the tablet's screen quality, noting its clear and vibrant visuals with a vivid and sharp 10.2-inch Retina display that takes remarkably good pictures.",
+          "customersMentionedCount": {
+            "total": 447,
+            "positive": 379,
+            "negative": 68
+          },
+          "partialReviews": [
+            {
+              "text": "...The 10.2-inch Retina display is bright and clear, delivering good color accuracy and crisp visuals which are great for media consumption....",
+              "highlightedPart": "clear",
+              "url": "https://www.amazon.com/gp/customer-reviews/R1WJG9TGZAE1XS"
+            },
+            {
+              "text": "It has everything I need—great screen, solid battery life, and works perfectly for browsing, streaming, and even light editing....",
+              "highlightedPart": "great screen",
+              "url": "https://www.amazon.com/gp/customer-reviews/R2VK7P9EP6WNM1"
+            },
+            {
+              "text": "I love the size and very happy with the screen quality, battery life, and touch screen",
+              "highlightedPart": "screen quality",
+              "url": "https://www.amazon.com/gp/customer-reviews/R33D7PVYXFUFL5"
+            },
+            {
+              "text": "...I have not experienced any technical issues. Screen is very clear",
+              "highlightedPart": "Screen is very clear",
+              "url": "https://www.amazon.com/gp/customer-reviews/RFEDQ5GVFDOTB"
+            }
+          ]
+        },
+        {
+          "name": "Screen size",
+          "sentiment": "positive",
+          "text": "Customers like the screen size of the iPad, finding it good and not too big, with one customer noting it's large enough to be productive and another mentioning it's suitable for viewing without glasses.",
+          "customersMentionedCount": {
+            "total": 369,
+            "positive": 327,
+            "negative": 42
+          },
+          "partialReviews": [
+            {
+              "text": "...It doesn't lag so drawing isn't a hassle, and personally, it's the perfect size, too. Not too small, nor too big....",
+              "highlightedPart": "perfect size",
+              "url": "https://www.amazon.com/gp/customer-reviews/RC4R1WUAGW69R"
+            },
+            {
+              "text": "Perfect size!",
+              "highlightedPart": "Perfect size",
+              "url": "https://www.amazon.com/gp/customer-reviews/RD8Y1OPFHG4HK"
+            },
+            {
+              "text": "...2 years I upgraded to the 14 PROMax which has a great camera, larger screen and is not unlike the SE except the bigger size to view photos....",
+              "highlightedPart": "larger screen",
+              "url": "https://www.amazon.com/gp/customer-reviews/R2HXFTCZHMFSSK"
+            },
+            {
+              "text": "...It works well and I do like the bigger screen. Setting it up from my iPhone was a bit tedious. The apps went all over the place....",
+              "highlightedPart": "bigger screen",
+              "url": "https://www.amazon.com/gp/customer-reviews/RKHO2XWPOSR96"
+            }
+          ]
+        },
+        {
+          "name": "Battery life",
+          "sentiment": "mixed",
+          "text": "Customers have mixed experiences with the tablet's battery life, with some finding it amazing and charging quickly, while others report it being terrible and taking forever to charge.",
+          "customersMentionedCount": {
+            "total": 675,
+            "positive": 467,
+            "negative": 208
+          },
+          "partialReviews": [
+            {
+              "text": "...The pros: the processor and the battery life. I've been using it for over a month....",
+              "highlightedPart": "battery life",
+              "url": "https://www.amazon.com/gp/customer-reviews/R1EYTE9QCBA1XT"
+            },
+            {
+              "text": "...My mini still has great battery life. I still like it....",
+              "highlightedPart": "great battery life",
+              "url": "https://www.amazon.com/gp/customer-reviews/RT5OC33QC1NJZ"
+            },
+            {
+              "text": "...of NEWBIE'S saying they got the IPAD and returned it because the battery life sucks.",
+              "highlightedPart": "battery life sucks",
+              "url": "https://www.amazon.com/gp/customer-reviews/R29OEYN0PNMJW8"
+            },
+            {
+              "text": "When available, Amazon is a great place to buy Apple. Good battery life, durability, functionality and good price.,",
+              "highlightedPart": "Good battery life",
+              "url": "https://www.amazon.com/gp/customer-reviews/RQU4MG1GYY717"
+            }
+          ]
+        }
+      ]
+    },
+    "monthlyPurchaseVolume": null,
+    "productPageReviews": [
+      {
+        "username": "Emily K",
+        "userId": "amzn1.account.AECWNJSLUVGFKFAL3FMP6NVWJRMA",
+        "userProfileLink": "https://www.amazon.com/gp/profile/amzn1.account.AECWNJSLUVGFKFAL3FMP6NVWJRMA/ref=cm_cr_dp_d_gw_tr?ie=UTF8",
+        "ratingScore": 5,
+        "reviewTitle": "Perfect iPad for Kids – Great Value Without Breaking the Bank!",
+        "reviewDescription": "I bought two of the Apple iPad (9th Generation) tablets for my younger kids, and they’ve both been fantastic. The performance is smooth and reliable thanks to the A13 Bionic chip, and the 10.2-inch Retina display is crisp and bright — perfect for schoolwork, games, and videos.I love that they have Touch ID for security, and the front camera is great for video calls with family. The battery life easily lasts all day, and they’ve held up well so far.This model is a great option if you want solid Apple quality without spending a fortune. Highly recommend for families!",
+        "date": "2025-06-13",
+        "position": 1,
+        "reviewedIn": "Reviewed in the United States on June 13, 2025",
+        "reviewId": "RWUXOCLU1F8F1",
+        "reviewUrl": "https://www.amazon.com/gp/customer-reviews/RWUXOCLU1F8F1/ref=cm_cr_dp_d_rvw_ttl?ie=UTF8",
+        "reviewImages": [],
+        "reviewReaction": "3 people found this helpful",
+        "isVerified": true,
+        "isAmazonVine": false,
+        "avatar": null,
+        "variant": "Style: WiFi, Size: 64 GB, Color: Silver, Configuration: Without AppleCare+",
+        "variantAttributes": [
+          {
+            "key": "Style",
+            "value": "WiFi"
+          },
+          {
+            "key": "Size",
+            "value": "64 GB"
+          },
+          {
+            "key": "Color",
+            "value": "Silver"
+          },
+          {
+            "key": "Configuration",
+            "value": "Without AppleCare+"
+          }
+        ]
+      },
+      {
+        "username": "GRUMPY BEAR",
+        "userId": "amzn1.account.AHI47MRCS4QFJGCBSIP7HNH5DUHQ",
+        "userProfileLink": "https://www.amazon.com/gp/profile/amzn1.account.AHI47MRCS4QFJGCBSIP7HNH5DUHQ/ref=cm_cr_dp_d_gw_tr?ie=UTF8",
+        "ratingScore": 5,
+        "reviewTitle": "🍎 Excellent Quality 🍏 Value 🍎 Sharp Retina Display 🍏 User Friendly 🍎🤪🍏❤️😃😎❤️🍏",
+        "reviewDescription": "This Apple 🍎 iPad 9th generation is very competent and does everything I want it to do.  I don’t do anything really super complicated with it (mostly streaming 🎥 movies, surfing 🏄‍♂️ the net, and of course, ✍️ writing product reviews 🤪😁😜😛😆) so it’s fine for my needs.  Without a case, it’s just over a pound (so not that heavy).  It has fast connectivity and is intuitively, user-friendly.  The 👁️ retina display touchscreen is a pretty decent size at 10.2 inches (diagonally).  The touchscreen is sharp, vivid, true to color, and very responsive.  Also, this iPad came with a 20W USB-C power adapter, USB-C to lightning charge cable, and 3 months free Apple TV+.  The Apple TV+ is great because I have been able to watch the ⚽️ soccer/football⚽️ show, Ted Lasso, for FREE.  👍😁👍  Score!!!!!  ⚽️🥅⚽️  Apple 🍏 makes excellent, quality electronics, and this handheld computer is absolutely no exception.  👍🍏😃🍎  The only things I wish were different about this iPad are the slow charging speed and the battery drains a little faster than I would like.  I use the iPad while it’s charging and that slows down the charging speed.  I purchased this iPad for about $200 plus tax (free shipping, on sale, and had a gift card too).  I would like to buy the 10th generation iPad, but it’s just too pricey and expensive for me.  This is a much more budget-friendly option.  Long story short, I really like this iPad and am very happy with this purchase.  Because of its excellent qualities, it’s going to be very useful to me, and I think 🤔 it will last a long time.  I am impressed by it and highly recommend it (especially if money is a factor).  👍🍏🤪❤️😃🍎👍🍏😎🤔🍏👍❤️😝⭐️🩷🍎👍",
+        "date": "2023-08-25",
+        "position": 2,
+        "reviewedIn": "Reviewed in the United States on August 25, 2023",
+        "reviewId": "R3QEWDZ943PL85",
+        "reviewUrl": "https://www.amazon.com/gp/customer-reviews/R3QEWDZ943PL85/ref=cm_cr_dp_d_rvw_ttl?ie=UTF8",
+        "reviewImages": [
+          "https://m.media-amazon.com/images/I/61jHTXUL1bL._SY88.jpg",
+          "https://m.media-amazon.com/images/I/71hFGa7X3FL._SY88.jpg",
+          "https://m.media-amazon.com/images/I/61pRniz2v+L._SY88.jpg"
+        ],
+        "reviewReaction": "97 people found this helpful",
+        "isVerified": true,
+        "isAmazonVine": false,
+        "avatar": "https://m.media-amazon.com/images/S/amazon-avatars-global/214f41ca-c098-40a6-8974-e5477c1d250e._CR62%2C0%2C375%2C375_SX460_.jpg",
+        "variant": "Style: WiFi, Size: 64 GB, Color: Space Gray, Configuration: Without AppleCare+",
+        "variantAttributes": [
+          {
+            "key": "Style",
+            "value": "WiFi"
+          },
+          {
+            "key": "Size",
+            "value": "64 GB"
+          },
+          {
+            "key": "Color",
+            "value": "Space Gray"
+          },
+          {
+            "key": "Configuration",
+            "value": "Without AppleCare+"
+          }
+        ]
+      },
+      {
+        "username": "Stefanie",
+        "userId": "amzn1.account.AF72KKZPF5XQVNQDGWUYTD6GLK5Q",
+        "userProfileLink": "https://www.amazon.com/gp/profile/amzn1.account.AF72KKZPF5XQVNQDGWUYTD6GLK5Q/ref=cm_cr_dp_d_gw_tr?ie=UTF8",
+        "ratingScore": 5,
+        "reviewTitle": "So far so good",
+        "reviewDescription": "Since I got two of these at Christmas time at 7 months ago I've not seen my kids since. So I guess that's a thumbs up for both of them. I've saved a lot of money by allowing them to become addicted to their iPads.And all seriousness I really like this model version. This is a good one it's affordable and does everything they need it to do for school. And I'm able to keep an eye on them without them knowing..",
+        "date": "2025-07-19",
+        "position": 3,
+        "reviewedIn": "Reviewed in the United States on July 19, 2025",
+        "reviewId": "R1CHMTQ7LUF4QQ",
+        "reviewUrl": "https://www.amazon.com/gp/customer-reviews/R1CHMTQ7LUF4QQ/ref=cm_cr_dp_d_rvw_ttl?ie=UTF8",
+        "reviewImages": [],
+        "reviewReaction": null,
+        "isVerified": true,
+        "isAmazonVine": false,
+        "avatar": null,
+        "variant": "Style: WiFi, Size: 64 GB, Color: Space Gray, Configuration: Without AppleCare+",
+        "variantAttributes": [
+          {
+            "key": "Style",
+            "value": "WiFi"
+          },
+          {
+            "key": "Size",
+            "value": "64 GB"
+          },
+          {
+            "key": "Color",
+            "value": "Space Gray"
+          },
+          {
+            "key": "Configuration",
+            "value": "Without AppleCare+"
+          }
+        ]
+      },
+      {
+        "username": "Gerald Sandoval",
+        "userId": "amzn1.account.AE6SESINXFXN7ZU63VLUXVBGZOSQ",
+        "userProfileLink": "https://www.amazon.com/gp/profile/amzn1.account.AE6SESINXFXN7ZU63VLUXVBGZOSQ/ref=cm_cr_dp_d_gw_tr?ie=UTF8",
+        "ratingScore": 5,
+        "reviewTitle": "2 years + and still gets the job done",
+        "reviewDescription": "Good product. Its been working fine for over 2 years now, apps still run fine and no lag or failure of any kind.",
+        "date": "2025-08-19",
+        "position": 4,
+        "reviewedIn": "Reviewed in the United States on August 19, 2025",
+        "reviewId": "R3OZCODW3FQ8AG",
+        "reviewUrl": "https://www.amazon.com/gp/customer-reviews/R3OZCODW3FQ8AG/ref=cm_cr_dp_d_rvw_ttl?ie=UTF8",
+        "reviewImages": [],
+        "reviewReaction": null,
+        "isVerified": true,
+        "isAmazonVine": false,
+        "avatar": null,
+        "variant": "Style: WiFi, Size: 64 GB, Color: Space Gray, Configuration: Without AppleCare+",
+        "variantAttributes": [
+          {
+            "key": "Style",
+            "value": "WiFi"
+          },
+          {
+            "key": "Size",
+            "value": "64 GB"
+          },
+          {
+            "key": "Color",
+            "value": "Space Gray"
+          },
+          {
+            "key": "Configuration",
+            "value": "Without AppleCare+"
+          }
+        ]
+      },
+      {
+        "username": "roger mills",
+        "userId": "amzn1.account.AG4VDJC37NRWLGBGND7TPTAJKJUQ",
+        "userProfileLink": "https://www.amazon.com/gp/profile/amzn1.account.AG4VDJC37NRWLGBGND7TPTAJKJUQ/ref=cm_cr_dp_d_gw_tr?ie=UTF8",
+        "ratingScore": 5,
+        "reviewTitle": "Great ipan",
+        "reviewDescription": "Great price",
+        "date": "2025-09-03",
+        "position": 5,
+        "reviewedIn": "Reviewed in the United States on September 3, 2025",
+        "reviewId": "RF983SJWYX2U5",
+        "reviewUrl": "https://www.amazon.com/gp/customer-reviews/RF983SJWYX2U5/ref=cm_cr_dp_d_rvw_ttl?ie=UTF8",
+        "reviewImages": [],
+        "reviewReaction": null,
+        "isVerified": true,
+        "isAmazonVine": false,
+        "avatar": null,
+        "variant": "Style: WiFi, Size: 64 GB, Color: Space Gray, Configuration: Without AppleCare+",
+        "variantAttributes": [
+          {
+            "key": "Style",
+            "value": "WiFi"
+          },
+          {
+            "key": "Size",
+            "value": "64 GB"
+          },
+          {
+            "key": "Color",
+            "value": "Space Gray"
+          },
+          {
+            "key": "Configuration",
+            "value": "Without AppleCare+"
+          }
+        ]
+      },
+      {
+        "username": "Ashar",
+        "userId": "amzn1.account.AHQMH5LEEQOVZMEUBIDRJWFJM7EQ",
+        "userProfileLink": "https://www.amazon.com/gp/profile/amzn1.account.AHQMH5LEEQOVZMEUBIDRJWFJM7EQ/ref=cm_cr_dp_d_gw_tr?ie=UTF8",
+        "ratingScore": 4,
+        "reviewTitle": "Reliable and Affordable",
+        "reviewDescription": "I recently got my hands on the Apple iPad (9th Generation), and it's been a dependable companion for my daily tasks. The A13 Bionic chip ensures smooth performance, whether I'm browsing, streaming, or using productivity apps. The 10.2-inch Retina display with True Tone offers vibrant visuals, making reading and watching videos a pleasure. I appreciate the 12MP Ultra Wide front camera with Center Stage—it keeps me centered during video calls, which is a nice touch. While the design feels a bit dated with its Home button and Lightning port, the functionality it offers at this price point is impressive. The support for the first-generation Apple Pencil and Smart Keyboard adds versatility, though I do wish it supported the newer accessories. Battery life has been solid, easily lasting me through the day. Overall, the iPad 9th Gen strikes a great balance between performance and affordability, making it a worthwhile purchase for anyone seeking a reliable tablet without breaking the bank.",
+        "date": "2025-05-21",
+        "position": 6,
+        "reviewedIn": "Reviewed in the United States on May 21, 2025",
+        "reviewId": "R20GA0TCV8YFA0",
+        "reviewUrl": "https://www.amazon.com/gp/customer-reviews/R20GA0TCV8YFA0/ref=cm_cr_dp_d_rvw_ttl?ie=UTF8",
+        "reviewImages": [],
+        "reviewReaction": "2 people found this helpful",
+        "isVerified": true,
+        "isAmazonVine": false,
+        "avatar": null,
+        "variant": "Style: WiFi, Size: 64 GB, Color: Space Gray, Configuration: Without AppleCare+",
+        "variantAttributes": [
+          {
+            "key": "Style",
+            "value": "WiFi"
+          },
+          {
+            "key": "Size",
+            "value": "64 GB"
+          },
+          {
+            "key": "Color",
+            "value": "Space Gray"
+          },
+          {
+            "key": "Configuration",
+            "value": "Without AppleCare+"
+          }
+        ]
+      },
+      {
+        "username": "a boyechko",
+        "userId": "amzn1.account.AG5MB3LLFIMF64LWLWHQ2XVNXRUQ",
+        "userProfileLink": "https://www.amazon.com/gp/profile/amzn1.account.AG5MB3LLFIMF64LWLWHQ2XVNXRUQ/ref=cm_cr_dp_d_gw_tr?ie=UTF8",
+        "ratingScore": 5,
+        "reviewTitle": "Good iPad, year on works great.",
+        "reviewDescription": "Great iPad for everyday tasks like reading, scrolling, watching Netflix when you are travelling etc.",
+        "date": "2025-08-22",
+        "position": 7,
+        "reviewedIn": "Reviewed in the United States on August 22, 2025",
+        "reviewId": "R3B5SFTX0D2RE8",
+        "reviewUrl": "https://www.amazon.com/gp/customer-reviews/R3B5SFTX0D2RE8/ref=cm_cr_dp_d_rvw_ttl?ie=UTF8",
+        "reviewImages": [],
+        "reviewReaction": null,
+        "isVerified": true,
+        "isAmazonVine": false,
+        "avatar": null,
+        "variant": "Style: WiFi, Size: 256GB, Color: Silver, Configuration: Without AppleCare+",
+        "variantAttributes": [
+          {
+            "key": "Style",
+            "value": "WiFi"
+          },
+          {
+            "key": "Size",
+            "value": "256GB"
+          },
+          {
+            "key": "Color",
+            "value": "Silver"
+          },
+          {
+            "key": "Configuration",
+            "value": "Without AppleCare+"
+          }
+        ]
+      },
+      {
+        "username": "An H. Pham",
+        "userId": "amzn1.account.AHXXNRFMXGA7GPCHDAXX7M537CUQ",
+        "userProfileLink": "https://www.amazon.com/gp/profile/amzn1.account.AHXXNRFMXGA7GPCHDAXX7M537CUQ/ref=cm_cr_dp_d_gw_tr?ie=UTF8",
+        "ratingScore": 5,
+        "reviewTitle": "Apple does it again, the best of Apple in a great price!",
+        "reviewDescription": "I have had my iPad 9th Generation 64GB Wi-Fi since the end of November, 2022. It has been about 5 months. I upgraded from an iPad Air 2 32GB Wi-Fi (2014 model) that I had for almost 6 years! I have to say that there is a reason why Apple iPads are sold at such a premium price. That's because they provide valuable practical use for far longer than the vast majority of what is available in the tablet market.With that said the 2021 iPad 9th Generation is a base iPad with a limited amount of fancy features and a dated iPad design. Quite frankly, I actually use my iPad on the go and all of the iPads I have had go directly into an Otterbox Defender case. So I hardly notice the little aesthetics in design when my iPads area always in an Otterbox Defender case.I won't make this review long and will highlight the particular reason why I feel the need to write this review at all. I would say there's three top reasons why I believe the iPad 9th generation is excellent: 1. Good CPU performance/64GB base memory capacity, 2. Value pricing, and 3. Apple Pencil/Freeform.1. CPU performance is good with the A13 CPU from the iPhone 11. I am confident that I will be able to use this iPad for at least 4 more years, if not 5. I bought my iPad Air 2 (2014 model) in 2016 and it was supported with OS updates up until iPadOS 15, which is a total of 8 years. But the iPad Air 2 was among the longest supported iPads in Apple's tablet history. So it is not likely to be repeated. But I think that the iPad 9th generation should be supported for at least 6 years, 2021 to 2027. Plus, the 64GB base capacity is excellent for my basic use of the iPad.2. The pricing for the iPad 9th Generation 64GB retails at $329.99, but it is often for sale at $269.99. That's how much I purchased it for during Cyber Monday 2022. It has been on sale for as low as $249.99 at some other retailers as well. So overall, the pricing is very affordable for a device this capable with support for many years to come.3. I know that the Apple Pencil has been out for years, but I have only now tried it. It was not supported with my iPad Air 2 (2014 model) and I never gave it much thought as being useful to me. I always thought that the Apple Pencil was geared towards artists, which to some extent it is. I tried the Apple Pencil on my iPad 9th Generation about a month after getting mine. It was a revolutionary experience for me. I have been looking for a viable substitute for a whiteboard for the longest time. But there is not any real replacement for what you can do on a whiteboard. The Apple Pencil with FreeForm is the closest that I've come to the experience I get on a whiteboard. Although, I do still use a 4'x8' whiteboard for some brainstorming sessions, the Apple Pencil has afforded me to do some basic brainstorming in FreeForm. This is a massive benefit and I can only see Apple getting better with its FreeForm app. Not to mention app developers releasing new apps to take advantage of the Apple Pencil for brainstorming on a virtual whiteboard.Overall, I highly recommend the iPad 9th Generation.",
+        "date": "2023-03-26",
+        "position": 8,
+        "reviewedIn": "Reviewed in the United States on March 26, 2023",
+        "reviewId": "RVZOKGVFM24YV",
+        "reviewUrl": "https://www.amazon.com/gp/customer-reviews/RVZOKGVFM24YV/ref=cm_cr_dp_d_rvw_ttl?ie=UTF8",
+        "reviewImages": [],
+        "reviewReaction": "320 people found this helpful",
+        "isVerified": true,
+        "isAmazonVine": false,
+        "avatar": null,
+        "variant": "Style: WiFi, Size: 64 GB, Color: Silver, Configuration: Without AppleCare+",
+        "variantAttributes": [
+          {
+            "key": "Style",
+            "value": "WiFi"
+          },
+          {
+            "key": "Size",
+            "value": "64 GB"
+          },
+          {
+            "key": "Color",
+            "value": "Silver"
+          },
+          {
+            "key": "Configuration",
+            "value": "Without AppleCare+"
+          }
+        ]
+      }
+    ],
+    "productPageReviewsFromOtherCountries": [
+      {
+        "username": "Adriana Correia.",
+        "userId": null,
+        "userProfileLink": null,
+        "ratingScore": 5,
+        "reviewTitle": "Amooo quero outro",
+        "reviewDescription": "Ótimo dura muito tempo amo",
+        "date": "2025-05-25",
+        "position": 1,
+        "reviewedIn": "Reviewed in Brazil on May 25, 2025",
+        "reviewId": "R1Z84Y8IFYAN4J",
+        "reviewUrl": null,
+        "reviewImages": [],
+        "reviewReaction": null,
+        "isVerified": true,
+        "isAmazonVine": false,
+        "avatar": null,
+        "variant": "Style: WiFi, Size: 256GB, Color: Silver, Configuration: Without AppleCare+",
+        "variantAttributes": [
+          {
+            "key": "Style",
+            "value": "WiFi"
+          },
+          {
+            "key": "Size",
+            "value": "256GB"
+          },
+          {
+            "key": "Color",
+            "value": "Silver"
+          },
+          {
+            "key": "Configuration",
+            "value": "Without AppleCare+"
+          }
+        ]
+      },
+      {
+        "username": "Tarek",
+        "userId": null,
+        "userProfileLink": null,
+        "ratingScore": 5,
+        "reviewTitle": "Apple products!!",
+        "reviewDescription": "I never had a problem with apple products, this ipad is very nice and very practical. Delivery was fast and packed well.",
+        "date": "2024-11-18",
+        "position": 2,
+        "reviewedIn": "Reviewed in Egypt on November 18, 2024",
+        "reviewId": "R2U4WPMVNWWKBE",
+        "reviewUrl": null,
+        "reviewImages": [],
+        "reviewReaction": null,
+        "isVerified": true,
+        "isAmazonVine": false,
+        "avatar": null,
+        "variant": "Style: WiFi, Size: 64 GB, Color: Space Gray, Configuration: Without AppleCare+",
+        "variantAttributes": [
+          {
+            "key": "Style",
+            "value": "WiFi"
+          },
+          {
+            "key": "Size",
+            "value": "64 GB"
+          },
+          {
+            "key": "Color",
+            "value": "Space Gray"
+          },
+          {
+            "key": "Configuration",
+            "value": "Without AppleCare+"
+          }
+        ]
+      },
+      {
+        "username": "Monica Medeiros",
+        "userId": null,
+        "userProfileLink": null,
+        "ratingScore": 5,
+        "reviewTitle": "perfeito",
+        "reviewDescription": "maravilhoso, uso até agora.",
+        "date": "2025-09-05",
+        "position": 3,
+        "reviewedIn": "Reviewed in Brazil on September 5, 2025",
+        "reviewId": "R34BVWUVXIFPSD",
+        "reviewUrl": null,
+        "reviewImages": [],
+        "reviewReaction": null,
+        "isVerified": true,
+        "isAmazonVine": false,
+        "avatar": null,
+        "variant": "Style: WiFi, Size: 64 GB, Color: Space Gray, Configuration: Without AppleCare+",
+        "variantAttributes": [
+          {
+            "key": "Style",
+            "value": "WiFi"
+          },
+          {
+            "key": "Size",
+            "value": "64 GB"
+          },
+          {
+            "key": "Color",
+            "value": "Space Gray"
+          },
+          {
+            "key": "Configuration",
+            "value": "Without AppleCare+"
+          }
+        ]
+      },
+      {
+        "username": "Lucas",
+        "userId": null,
+        "userProfileLink": null,
+        "ratingScore": 5,
+        "reviewTitle": "Ótimo produto, já usei 3 anos",
+        "reviewDescription": "Estou fazendo a avaliação atrasada. Já utilizei 3 anos e está ótimo",
+        "date": "2024-11-04",
+        "position": 4,
+        "reviewedIn": "Reviewed in Brazil on November 4, 2024",
+        "reviewId": "R3DUHXDH5DR103",
+        "reviewUrl": null,
+        "reviewImages": [],
+        "reviewReaction": null,
+        "isVerified": true,
+        "isAmazonVine": false,
+        "avatar": null,
+        "variant": "Style: WiFi, Size: 256GB, Color: Space Gray, Configuration: Without AppleCare+",
+        "variantAttributes": [
+          {
+            "key": "Style",
+            "value": "WiFi"
+          },
+          {
+            "key": "Size",
+            "value": "256GB"
+          },
+          {
+            "key": "Color",
+            "value": "Space Gray"
+          },
+          {
+            "key": "Configuration",
+            "value": "Without AppleCare+"
+          }
+        ]
+      },
+      {
+        "username": "Sigmar Spanier Neto",
+        "userId": null,
+        "userProfileLink": null,
+        "ratingScore": 5,
+        "reviewTitle": "Muito bom",
+        "reviewDescription": "Muito bom",
+        "date": "2025-05-08",
+        "position": 5,
+        "reviewedIn": "Reviewed in Brazil on May 8, 2025",
+        "reviewId": "R3EMTZA61KWIDL",
+        "reviewUrl": null,
+        "reviewImages": [],
+        "reviewReaction": null,
+        "isVerified": true,
+        "isAmazonVine": false,
+        "avatar": null,
+        "variant": "Style: WiFi, Size: 64 GB, Color: Silver, Configuration: Without AppleCare+",
+        "variantAttributes": [
+          {
+            "key": "Style",
+            "value": "WiFi"
+          },
+          {
+            "key": "Size",
+            "value": "64 GB"
+          },
+          {
+            "key": "Color",
+            "value": "Silver"
+          },
+          {
+            "key": "Configuration",
+            "value": "Without AppleCare+"
+          }
+        ]
+      }
+    ],
+    "locationText": "Update location",
+    "loadedCountryCode": "US",
+    "offers": [],
+    "unNormalizedProductUrl": "https://www.amazon.com/dp/B09G9FPHY6",
+    "condition": "",
+    "position": 1,
+    "input": "https://www.amazon.com/dp/B09G9FPHY6"
+  }
+}

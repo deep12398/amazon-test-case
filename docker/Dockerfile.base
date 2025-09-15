@@ -1,0 +1,53 @@
+# ú@\Ï Dockerfile
+FROM python:3.11-slim as base
+
+# ¾n¯ƒØÏ
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+# ‰ÅûßV
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+        libpq-dev \
+        curl \
+        netcat-openbsd \
+    && rm -rf /var/lib/apt/lists/*
+
+# ‰ÅUV¡h
+RUN pip install uv
+
+# ú”((7
+RUN groupadd -r appuser && useradd -r -g appuser appuser
+
+# ú”(îU
+WORKDIR /app
+
+# 6V‡ö
+COPY pyproject.toml uv.lock* ./
+
+# ‰ÅPythonV (§¯ƒ)
+RUN uv venv .venv \
+    && . .venv/bin/activate \
+    && uv pip install --only-production -r pyproject.toml
+
+# 6”(ã
+COPY . .
+
+# ¾nCP
+RUN chown -R appuser:appuser /app
+
+# b0”((7
+USER appuser
+
+# À;Zß¯ƒ
+ENV PATH="/app/.venv/bin:$PATH"
+
+# e·Àå
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
+
+# ´2ïã
+EXPOSE 8000

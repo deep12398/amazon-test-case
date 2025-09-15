@@ -1,0 +1,135 @@
+# Pre-commit配置文件
+# 使用方法：
+#   1. 安装: pre-commit install
+#   2. 运行: pre-commit run --all-files
+
+repos:
+  # Python代码格式化器 - Black
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks:
+      - id: black
+        name: "🖤 Black Formatter"
+        language_version: python3.11
+        args: [--line-length=88]
+
+  # Python代码检查器 - Ruff (替代flake8, isort, pyupgrade等)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.9
+    hooks:
+      - id: ruff
+        name: "⚡ Ruff Linter"
+        args: [--fix, --exit-non-zero-on-fix]
+      - id: ruff-format
+        name: "⚡ Ruff Formatter"
+
+  # 通用文件检查
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      # 文件格式检查
+      - id: trailing-whitespace
+        name: "✂️  去除尾随空格"
+      - id: end-of-file-fixer
+        name: "📄 修复文件末尾"
+      - id: check-yaml
+        name: "📋 检查YAML语法"
+        args: [--unsafe]  # 允许任意YAML标签
+      - id: check-toml
+        name: "📋 检查TOML语法"
+      - id: check-json
+        name: "📋 检查JSON语法"
+
+      # 代码质量检查
+      - id: check-ast
+        name: "🐍 检查Python AST"
+      - id: check-builtin-literals
+        name: "🔍 检查内置字面量"
+      - id: check-case-conflict
+        name: "📂 检查文件名冲突"
+      - id: check-docstring-first
+        name: "📝 检查文档字符串位置"
+      - id: check-merge-conflict
+        name: "🔀 检查合并冲突"
+      - id: debug-statements
+        name: "🐛 检查调试语句"
+
+      # 安全检查
+      - id: check-added-large-files
+        name: "📦 检查大文件"
+        args: [--maxkb=1000]
+      - id: detect-private-key
+        name: "🔐 检查私钥"
+
+  # Python类型检查 - MyPy
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.8.0
+    hooks:
+      - id: mypy
+        name: "🔍 MyPy类型检查"
+        additional_dependencies:
+          - types-requests
+          - types-redis
+          - types-python-dateutil
+        args: [--ignore-missing-imports, --show-error-codes]
+        exclude: ^(migrations/|tests/|scripts/)
+
+  # 安全漏洞检查 - Bandit
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.5
+    hooks:
+      - id: bandit
+        name: "🛡️  Bandit安全检查"
+        args: [-r, ., -x, tests/]
+        exclude: ^tests/
+
+  # 依赖安全检查 - Safety
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
+    rev: v1.3.2
+    hooks:
+      - id: python-safety-dependencies-check
+        name: "🔒 依赖安全检查"
+
+  # 文档字符串检查 - pydocstyle
+  - repo: https://github.com/PyCQA/pydocstyle
+    rev: 6.3.0
+    hooks:
+      - id: pydocstyle
+        name: "📚 文档字符串检查"
+        args: [--convention=google]
+        exclude: ^(migrations/|tests/|scripts/)
+
+  # Dockerfile检查
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.12.0
+    hooks:
+      - id: hadolint-docker
+        name: "🐳 Dockerfile检查"
+        args: [--ignore, DL3008, --ignore, DL3009]
+
+  # 环境变量检查
+  - repo: local
+    hooks:
+      - id: check-env-vars
+        name: "🔧 检查环境变量"
+        entry: python scripts/check_env_vars.py
+        language: system
+        files: \.env\.example$
+        pass_filenames: false
+
+# 全局配置
+default_language_version:
+  python: python3.11
+
+# CI配置
+ci:
+  autofix_commit_msg: |
+    [pre-commit.ci] 自动修复代码格式
+
+    [skip ci]
+  autofix_prs: true
+  autoupdate_branch: ''
+  autoupdate_commit_msg: '[pre-commit.ci] pre-commit 钩子自动更新'
+  autoupdate_schedule: weekly
+  skip: []
+  submodules: false

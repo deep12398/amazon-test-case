@@ -1,0 +1,351 @@
+  {
+  "demo_products_sample_data": {
+    "metadata": {
+      "total_products": 20,
+      "category": "蓝牙耳机",
+      "price_range": {"min": 59, "max": 599},
+      "data_collection_date": "2025-09-13",
+      "bsr_data_availability": "94.6%",
+      "crawlers_used": [
+        "ZhSGsaq9MHRnWtStl",
+        "junglee/amazon-bestsellers"
+      ]
+    },
+    "products": [
+      {
+        "asin": "B0D1XD1ZV3",
+        "title": "Apple AirPods Pro 2 Wireless Earbuds, Active Noise Cancellation, Hearing Aid Feature",
+        "brand": "Apple",
+        "manufacturer": "Apple",
+        "category": "蓝牙耳机",
+        "subcategory": "真无线耳机",
+        "marketplace": "amazon_us",
+        "product_url": "https://www.amazon.com/dp/B0D1XD1ZV3",
+        "image_url": "https://images-na.ssl-images-amazon.com/images/I/61SUj2aKoEL._AC_UL300_SR300,200_.jpg",
+        "pricing": {
+          "current_price": 199.00,
+          "list_price": 249.00,
+          "buy_box_price": 199.00,
+          "currency": "USD",
+          "discount_percent": 20.08,
+          "price_history": [
+            {"date": "2025-09-13", "price": 199.00},
+            {"date": "2025-09-12", "price": 199.00},
+            {"date": "2025-09-11", "price": 219.00}
+          ]
+        },
+        "bsr_rankings": [
+          {
+            "rank": 1,
+            "category": "Earbud Headphones",
+            "category_id": "12097479011",
+            "url": "https://www.amazon.com/gp/bestsellers/electronics/12097479011/"
+          },
+          {
+            "rank": 15,
+            "category": "Electronics",
+            "category_id": "electronics",
+            "url": "https://www.amazon.com/gp/bestsellers/electronics/"
+          }
+        ],
+        "ratings": {
+          "current_rating": 4.6,
+          "current_review_count": 37658,
+          "stars_breakdown": {
+            "5_star": 68,
+            "4_star": 19,
+            "3_star": 7,
+            "2_star": 3,
+            "1_star": 3
+          },
+          "rating_trend": "stable"
+        },
+        "features": [
+          "BREATHTAKING AUDIO QUALITY — Apple-designed dynamic driver provides high-fidelity audio",
+          "FOCUS ON WHAT'S PLAYING — Active Noise Cancellation blocks outside noise",
+          "HEAR THE WORLD AROUND YOU — Transparency mode lets you hear and interact",
+          "PERSONALIZED SPATIAL AUDIO — With sound that suits your unique ear shape",
+          "LONG BATTERY LIFE — Up to 6 hours of listening time with ANC enabled"
+        ],
+        "specifications": [
+          {"name": "Connectivity Technology", "value": "Wireless, Bluetooth"},
+          {"name": "Battery Life", "value": "Up to 6 hours (30 hours with case)"},
+          {"name": "Noise Control", "value": "Active Noise Cancellation"},
+          {"name": "Water Resistance", "value": "IPX4"},
+          {"name": "Chip", "value": "Apple H2"},
+          {"name": "Audio Technology", "value": "Personalized Spatial Audio"},
+          {"name": "Microphones", "value": "Dual beamforming microphones"},
+          {"name": "Sensors", "value": "Dual optical sensors, Motion-detecting accelerometer"}
+        ],
+        "availability": {
+          "status": "In Stock",
+          "seller": "Amazon",
+          "fulfilled_by": "Amazon",
+          "shipping": "FREE delivery"
+        },
+        "competitive_analysis": {
+          "is_main_product": false,
+          "is_competitor": true,
+          "competitive_score": 9.2,
+          "market_position": "Premium Leader",
+          "key_differentiators": [
+            "Apple ecosystem integration",
+            "H2 chip technology",
+            "Hearing aid feature",
+            "Brand premium"
+          ]
+        }
+      },
+      {
+        "asin": "B08PZHYWJS",
+        "title": "Apple AirPods Max Wireless Over-Ear Headphones, Active Noise Cancelling",
+        "brand": "Apple",
+        "manufacturer": "Apple",
+        "category": "蓝牙耳机",
+        "subcategory": "头戴式耳机",
+        "marketplace": "amazon_us",
+        "product_url": "https://www.amazon.com/dp/B08PZHYWJS",
+        "image_url": "https://m.media-amazon.com/images/I/81jqUPkIVRL.__AC_SY445_SX342_QL70_FMwebp_.jpg",
+        "pricing": {
+          "current_price": 499.00,
+          "list_price": 549.00,
+          "buy_box_price": 499.00,
+          "currency": "USD",
+          "discount_percent": 9.11,
+          "multiple_sellers": [
+            {"seller": "Amazon", "price": 499.00, "condition": "New"},
+            {"seller": "Amazon Resale", "price": 422.83, "condition": "Used - Good"},
+            {"seller": "Other Sellers", "price": 446.58, "condition": "New"}
+          ]
+        },
+        "bsr_rankings": [
+          {
+            "rank": 156,
+            "category": "Over-Ear Headphones",
+            "category_id": "12097478011",
+            "url": "https://www.amazon.com/gp/bestsellers/electronics/12097478011/"
+          },
+          {
+            "rank": 2156,
+            "category": "Electronics",
+            "category_id": "electronics",
+            "url": "https://www.amazon.com/gp/bestsellers/electronics/"
+          }
+        ],
+        "ratings": {
+          "current_rating": 4.5,
+          "current_review_count": 8170,
+          "stars_breakdown": {
+            "5_star": 63,
+            "4_star": 22,
+            "3_star": 8,
+            "2_star": 3,
+            "1_star": 4
+          },
+          "rating_trend": "stable"
+        },
+        "features": [
+          "BREATHTAKING AUDIO QUALITY — Apple-designed dynamic driver provides high-fidelity audio",
+          "FOCUS ON WHAT'S PLAYING — Active Noise Cancellation blocks outside noise",
+          "HEAR THE WORLD AROUND YOU — Transparency mode lets you hear and interact",
+          "PERSONALIZED SPATIAL AUDIO — With sound that suits your unique ear shape",
+          "ACOUSTIC-FIRST DESIGN — Designed with a knit-mesh canopy and memory foam ear cushions",
+          "MAGICAL EXPERIENCE — Pair AirPods Max by simply placing them near your device",
+          "LONG BATTERY LIFE — Up to 20 hours of listening, movie watching, or talk time"
+        ],
+        "specifications": [
+          {"name": "Noise Control", "value": "Active Noise Cancellation"},
+          {"name": "Headphones Jack", "value": "Lightning"},
+          {"name": "Model Name", "value": "AirPods Max"},
+          {"name": "Connectivity Technology", "value": "Wired, Wireless"},
+          {"name": "Wireless Communication Technology", "value": "Bluetooth, NFC"},
+          {"name": "Material", "value": "memory foam"},
+          {"name": "Control Type", "value": "Call Control, Media Control, Volume Control"},
+          {"name": "Item Weight", "value": "13.6 ounces"},
+          {"name": "Product Dimensions", "value": "9.43 x 9.57 x 3.15 inches"}
+        ],
+        "availability": {
+          "status": "In Stock",
+          "seller": "Amazon",
+          "fulfilled_by": "Amazon",
+          "shipping": "FREE delivery"
+        },
+        "competitive_analysis": {
+          "is_main_product": false,
+          "is_competitor": true,
+          "competitive_score": 8.5,
+          "market_position": "Premium Luxury",
+          "key_differentiators": [
+            "Premium build quality",
+            "Digital crown control",
+            "Spatial audio",
+            "Apple ecosystem"
+          ]
+        }
+      },
+      {
+        "asin": "B0863TXGM3",
+        "title": "Sony WH-1000XM4 Wireless Premium Noise Canceling Overhead Headphones, Black",
+        "brand": "Sony",
+        "manufacturer": "Sony",
+        "category": "蓝牙耳机",
+        "subcategory": "头戴式耳机",
+        "marketplace": "amazon_us",
+        "product_url": "https://www.amazon.com/dp/B0863TXGM3",
+        "image_url": "https://m.media-amazon.com/images/I/61oqO1AMbdL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+        "pricing": {
+          "current_price": 198.00,
+          "list_price": 349.99,
+          "buy_box_price": 198.00,
+          "currency": "USD",
+          "discount_percent": 43.43,
+          "multiple_sellers": [
+            {"seller": "Amazon", "price": 198.00, "condition": "New"},
+            {"seller": "Various", "price": 170.47, "condition": "Used"},
+            {"seller": "Third Party", "price": 219.99, "condition": "New"}
+          ]
+        },
+        "bsr_rankings": [
+          {
+            "rank": 45,
+            "category": "Over-Ear Headphones", 
+            "category_id": "12097478011",
+            "url": "https://www.amazon.com/gp/bestsellers/electronics/12097478011/"
+          },
+          {
+            "rank": 892,
+            "category": "Electronics",
+            "category_id": "electronics", 
+            "url": "https://www.amazon.com/gp/bestsellers/electronics/"
+          }
+        ],
+        "ratings": {
+          "current_rating": 4.6,
+          "current_review_count": 60925,
+          "stars_breakdown": {
+            "5_star": 70,
+            "4_star": 20,
+            "3_star": 6,
+            "2_star": 2,
+            "1_star": 2
+          },
+          "rating_trend": "increasing"
+        },
+        "features": [
+          "Industry-leading noise canceling with Dual Noise Sensor technology",
+          "30-hour battery life with quick charging (10 min charge for 5 hours of playback)",
+          "Touch Sensor controls to pause/play/skip tracks, control volume, activate your voice assistant",
+          "Speak-to-chat technology automatically reduces volume during conversations",
+          "Superior call quality with precise voice pickup via beamforming microphones",
+          "Wearing detection pauses playback when headphones are removed"
+        ],
+        "specifications": [
+          {"name": "Connectivity Technology", "value": "Wireless, Bluetooth"},
+          {"name": "Battery Life", "value": "30 hours"},
+          {"name": "Noise Control", "value": "Active Noise Cancellation"},
+          {"name": "Driver Size", "value": "40mm"},
+          {"name": "Frequency Response", "value": "4 Hz-40,000 Hz"},
+          {"name": "Weight", "value": "254g"},
+          {"name": "Bluetooth Version", "value": "5.0"},
+          {"name": "Audio Codecs", "value": "SBC, AAC, LDAC"}
+        ],
+        "availability": {
+          "status": "In Stock",
+          "seller": "Amazon",
+          "fulfilled_by": "Amazon",
+          "shipping": "FREE delivery"
+        },
+        "competitive_analysis": {
+          "is_main_product": false,
+          "is_competitor": true,
+          "competitive_score": 9.0,
+          "market_position": "Value Premium",
+          "key_differentiators": [
+            "30-hour battery life",
+            "Industry-leading ANC",
+            "Touch controls",
+            "Speak-to-chat feature"
+          ]
+        }
+      }
+    ]
+  },
+  "data_schema_definitions": {
+    "product_base": {
+      "required_fields": ["asin", "title", "brand", "category", "marketplace"],
+      "optional_fields": ["subcategory", "manufacturer", "image_url"],
+      "validation_rules": {
+        "asin": "^[A-Z0-9]{10}$",
+        "title": "max_length: 500",
+        "brand": "max_length: 100"
+      }
+    },
+    "pricing_data": {
+      "required_fields": ["current_price", "currency"],
+      "optional_fields": ["list_price", "buy_box_price", "discount_percent"],
+      "validation_rules": {
+        "price_range": {"min": 0, "max": 10000},
+        "currency": "^[A-Z]{3}$",
+        "discount_percent": {"min": 0, "max": 100}
+      }
+    },
+    "bsr_rankings": {
+      "required_fields": ["rank", "category"],
+      "optional_fields": ["category_id", "url"],
+      "validation_rules": {
+        "rank": {"min": 1, "max": 1000000},
+        "category": "non_empty_string"
+      }
+    },
+    "ratings_data": {
+      "required_fields": ["current_rating", "current_review_count"],
+      "optional_fields": ["stars_breakdown", "rating_trend"],
+      "validation_rules": {
+        "rating_range": {"min": 0, "max": 5},
+        "review_count": {"min": 0}
+      }
+    }
+  },
+  "competitive_analysis_framework": {
+    "comparison_dimensions": [
+      {
+        "dimension": "price_competitiveness",
+        "weight": 0.3,
+        "calculation": "relative_position_in_price_range",
+        "metrics": ["current_price", "discount_percent", "value_for_money"]
+      },
+      {
+        "dimension": "market_ranking",
+        "weight": 0.25,
+        "calculation": "bsr_position_score",
+        "metrics": ["primary_category_rank", "electronics_rank", "rank_trend"]
+      },
+      {
+        "dimension": "customer_satisfaction",
+        "weight": 0.25,
+        "calculation": "rating_and_volume_score",
+        "metrics": ["rating", "review_count", "rating_trend"]
+      },
+      {
+        "dimension": "feature_richness",
+        "weight": 0.2,
+        "calculation": "feature_comparison_score",
+        "metrics": ["key_features_count", "unique_features", "technology_level"]
+      }
+    ],
+    "benchmarking_approach": {
+      "price_segments": [
+        {"name": "Budget", "range": [0, 100]},
+        {"name": "Mid-range", "range": [100, 300]},
+        {"name": "Premium", "range": [300, 600]}
+      ],
+      "feature_categories": [
+        "noise_cancellation",
+        "battery_life", 
+        "connectivity",
+        "audio_quality",
+        "comfort_design"
+      ]
+    }
+  }
+}

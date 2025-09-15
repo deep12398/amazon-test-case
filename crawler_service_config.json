@@ -1,0 +1,37 @@
+{
+  "apify_actor_id": "BG3WDrGdteHgZgbPK",
+  "default_input": {
+    "startUrls": [
+      "https://www.amazon.com/dp/B08C7KG5LP"
+    ],
+    "maxItems": 1,
+    "country": "US",
+    "proxyConfiguration": {
+      "useApifyProxy": true,
+      "apifyProxyGroups": [
+        "RESIDENTIAL"
+      ]
+    }
+  },
+  "supported_countries": [
+    "US",
+    "UK",
+    "DE",
+    "FR",
+    "IT",
+    "ES",
+    "CA"
+  ],
+  "bluetooth_headphones_asins": [
+    "B08C7KG5LP",
+    "B098FKXT8L",
+    "B08527MF7C",
+    "B08WM3LMJF",
+    "B07Q9MJKBV",
+    "B08F21ZQHH",
+    "B08PZHYWJS",
+    "B0756CYWWD",
+    "B07G4MNFS1",
+    "B08J1XF3G5"
+  ]
+}

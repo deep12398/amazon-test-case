@@ -1,0 +1,45 @@
+{
+  "actor_id": "BG3WDrGdteHgZgbPK",
+  "actor_name": "Amazon-crawler",
+  "title": "Amazon Product Scraper",
+  "username": "junglee",
+  "description": "Use this Amazon scraper to collect data based on URL and country from the Amazon website. Extract product information without using the Amazon API, including reviews, prices, descriptions, and Amazon Standard Identification Numbers (ASINs).",
+  "stats": {
+    "totalRuns": 379523,
+    "totalUsers": 10454,
+    "rating": 4.161026861565801
+  },
+  "sample_input": {
+    "startUrls": [
+      "https://www.amazon.com/dp/B08C7KG5LP"
+    ],
+    "maxItems": 1,
+    "country": "US",
+    "proxyConfiguration": {
+      "useApifyProxy": true,
+      "apifyProxyGroups": [
+        "RESIDENTIAL"
+      ]
+    }
+  },
+  "test_products": [
+    "B08C7KG5LP",
+    "B098FKXT8L",
+    "B08527MF7C",
+    "B08WM3LMJF",
+    "B07Q9MJKBV",
+    "B08F21ZQHH",
+    "B08PZHYWJS",
+    "B0756CYWWD",
+    "B07G4MNFS1",
+    "B08J1XF3G5"
+  ],
+  "pricing": {
+    "model": "FLAT_PRICE_PER_MONTH",
+    "price": 40,
+    "trial_minutes": 20160
+  },
+  "status": "verified",
+  "test_date": "2025-09-12",
+  "verified_by": "claude-code-testing"
+}

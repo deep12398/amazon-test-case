@@ -1,0 +1,65 @@
+#
+# Minimal APISIX Configuration - No Consul Discovery
+#
+
+apisix:
+  node_listen: 9080
+  enable_heartbeat: true
+  enable_admin: true
+  enable_admin_cors: true
+  enable_debug: false
+  enable_dev_mode: false
+  enable_reuseport: true
+  enable_ipv6: false
+
+deployment:
+  role: data_plane
+  role_data_plane:
+    config_provider: etcd
+
+  etcd:
+    host:
+      - "http://etcd:2379"
+    prefix: "/apisix"
+    timeout: 30
+
+  admin:
+    admin_key:
+      - name: "admin"
+        key: "dev-admin-key-123"
+        role: admin
+    enable_admin_cors: true
+    allow_admin:
+      - 0.0.0.0/0
+    admin_listen:
+      ip: 0.0.0.0
+      port: 9180
+
+# Essential plugins only
+plugins:
+  - cors
+  - jwt-auth
+  - key-auth
+  - limit-req
+  - proxy-rewrite
+  - redirect
+  - prometheus
+
+# No discovery services
+discovery: {}
+
+# Minimal nginx config
+nginx_config:
+  error_log: "/dev/stderr"
+  error_log_level: "error"
+  worker_processes: 1
+  worker_rlimit_nofile: 1024
+
+  event:
+    worker_connections: 1024
+
+  http:
+    access_log: "/dev/stdout"
+    keepalive_timeout: "60s"
+    client_max_body_size: "0"
+    underscores_in_headers: "on"

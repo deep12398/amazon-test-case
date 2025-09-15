@@ -1,0 +1,325 @@
+#
+# APISIX Development Route Configuration
+# This file contains the basic route configuration for development environment
+#
+
+routes:
+  # Health check route
+  - id: 1
+    name: "health-check"
+    desc: "Health check endpoint"
+    uri: "/health"
+    methods:
+      - GET
+    upstream:
+      type: roundrobin
+      nodes:
+        "127.0.0.1:8001": 1  # User service health endpoint
+    plugins:
+      prometheus: {}
+
+  # User Service Routes (Authentication & User Management)
+  - id: 10
+    name: "user-service-auth"
+    desc: "User authentication routes"
+    uri: "/api/v1/auth/*"
+    methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+    upstream:
+      type: roundrobin
+      nodes:
+        "host.docker.internal:8001": 1  # User service
+    plugins:
+      cors:
+        allow_origins: "http://localhost:3000,http://127.0.0.1:3000"
+        allow_methods: "GET,POST,PUT,DELETE,OPTIONS"
+        allow_headers: "Content-Type,Authorization,X-Tenant-ID"
+        max_age: 3600
+      prometheus: {}
+      request-id: {}
+
+  # User Management Routes (with JWT auth)
+  - id: 11
+    name: "user-service-management"
+    desc: "User management routes"
+    uri: "/api/v1/users/*"
+    methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+    upstream:
+      type: roundrobin
+      nodes:
+        "host.docker.internal:8001": 1
+    plugins:
+      jwt-auth:
+        secret: "dev-jwt-secret-key-for-development-only"
+        exp: 86400  # 24 hours
+      cors:
+        allow_origins: "http://localhost:3000,http://127.0.0.1:3000"
+        allow_methods: "GET,POST,PUT,DELETE,OPTIONS"
+        allow_headers: "Content-Type,Authorization,X-Tenant-ID"
+        max_age: 3600
+      limit-req:
+        rate: 100
+        burst: 50
+        rejected_code: 429
+      prometheus: {}
+
+  # Tenant Management Routes
+  - id: 12
+    name: "tenant-management"
+    desc: "Tenant management routes"
+    uri: "/api/v1/tenants/*"
+    methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+    upstream:
+      type: roundrobin
+      nodes:
+        "host.docker.internal:8001": 1
+    plugins:
+      jwt-auth:
+        secret: "dev-jwt-secret-key-for-development-only"
+      cors:
+        allow_origins: "http://localhost:3000,http://127.0.0.1:3000"
+        allow_methods: "GET,POST,PUT,DELETE,OPTIONS"
+        allow_headers: "Content-Type,Authorization,X-Tenant-ID"
+      prometheus: {}
+
+  # Core Service Routes (Products & Analysis)
+  - id: 20
+    name: "core-service-products"
+    desc: "Product management routes"
+    uri: "/api/v1/products/*"
+    methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+    upstream:
+      type: roundrobin
+      nodes:
+        "host.docker.internal:8002": 1  # Core service
+    plugins:
+      jwt-auth:
+        secret: "dev-jwt-secret-key-for-development-only"
+      cors:
+        allow_origins: "http://localhost:3000,http://127.0.0.1:3000"
+        allow_methods: "GET,POST,PUT,DELETE,OPTIONS"
+        allow_headers: "Content-Type,Authorization,X-Tenant-ID"
+      limit-req:
+        rate: 200
+        burst: 100
+      prometheus: {}
+
+  # Category Management Routes
+  - id: 21
+    name: "core-service-categories"
+    desc: "Category management routes"
+    uri: "/api/v1/categories/*"
+    methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+    upstream:
+      type: roundrobin
+      nodes:
+        "host.docker.internal:8002": 1
+    plugins:
+      jwt-auth:
+        secret: "dev-jwt-secret-key-for-development-only"
+      cors:
+        allow_origins: "http://localhost:3000,http://127.0.0.1:3000"
+        allow_methods: "GET,POST,PUT,DELETE,OPTIONS"
+        allow_headers: "Content-Type,Authorization,X-Tenant-ID"
+      prometheus: {}
+
+  # Competitor Analysis Routes
+  - id: 22
+    name: "competitor-analysis"
+    desc: "Competitor analysis routes"
+    uri: "/api/v1/competitors/*"
+    methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+    upstream:
+      type: roundrobin
+      nodes:
+        "host.docker.internal:8002": 1
+    plugins:
+      jwt-auth:
+        secret: "dev-jwt-secret-key-for-development-only"
+      cors:
+        allow_origins: "http://localhost:3000,http://127.0.0.1:3000"
+        allow_methods: "GET,POST,PUT,DELETE,OPTIONS"
+        allow_headers: "Content-Type,Authorization,X-Tenant-ID"
+      limit-req:
+        rate: 50  # Lower rate for AI-intensive operations
+        burst: 20
+      prometheus: {}
+
+  # Optimization Suggestions Routes
+  - id: 23
+    name: "optimization-suggestions"
+    desc: "AI optimization suggestions routes"
+    uri: "/api/v1/suggestions/*"
+    methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+    upstream:
+      type: roundrobin
+      nodes:
+        "host.docker.internal:8002": 1
+    plugins:
+      jwt-auth:
+        secret: "dev-jwt-secret-key-for-development-only"
+      cors:
+        allow_origins: "http://localhost:3000,http://127.0.0.1:3000"
+        allow_methods: "GET,POST,PUT,DELETE,OPTIONS"
+        allow_headers: "Content-Type,Authorization,X-Tenant-ID"
+      limit-req:
+        rate: 30  # Lower rate for AI operations
+        burst: 10
+      prometheus: {}
+
+  # Crawler Service Routes
+  - id: 30
+    name: "crawler-service"
+    desc: "Data crawling service routes"
+    uri: "/api/v1/crawl/*"
+    methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+    upstream:
+      type: roundrobin
+      nodes:
+        "host.docker.internal:8003": 1  # Crawler service
+    plugins:
+      jwt-auth:
+        secret: "dev-jwt-secret-key-for-development-only"
+      cors:
+        allow_origins: "http://localhost:3000,http://127.0.0.1:3000"
+        allow_methods: "GET,POST,PUT,DELETE,OPTIONS"
+        allow_headers: "Content-Type,Authorization,X-Tenant-ID"
+      limit-req:
+        rate: 60  # Moderate rate for crawling operations
+        burst: 30
+      prometheus: {}
+
+  # Task Management Routes
+  - id: 40
+    name: "task-management"
+    desc: "Task management routes"
+    uri: "/api/v1/tasks/*"
+    methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+    upstream:
+      type: roundrobin
+      nodes:
+        "host.docker.internal:8002": 1  # Tasks handled by core service
+    plugins:
+      jwt-auth:
+        secret: "dev-jwt-secret-key-for-development-only"
+      cors:
+        allow_origins: "http://localhost:3000,http://127.0.0.1:3000"
+        allow_methods: "GET,POST,PUT,DELETE,OPTIONS"
+        allow_headers: "Content-Type,Authorization,X-Tenant-ID"
+      prometheus: {}
+
+  # System Management Routes
+  - id: 50
+    name: "system-management"
+    desc: "System management and monitoring routes"
+    uri: "/api/v1/system/*"
+    methods:
+      - GET
+      - POST
+      - PUT
+    upstream:
+      type: roundrobin
+      nodes:
+        "host.docker.internal:8001": 1  # System management in user service
+    plugins:
+      jwt-auth:
+        secret: "dev-jwt-secret-key-for-development-only"
+      cors:
+        allow_origins: "http://localhost:3000,http://127.0.0.1:3000"
+        allow_methods: "GET,POST,PUT,OPTIONS"
+        allow_headers: "Content-Type,Authorization,X-Tenant-ID"
+      prometheus: {}
+
+  # Metrics endpoint (no auth for Prometheus scraping)
+  - id: 60
+    name: "metrics"
+    desc: "Prometheus metrics endpoint"
+    uri: "/api/v1/metrics"
+    methods:
+      - GET
+    upstream:
+      type: roundrobin
+      nodes:
+        "host.docker.internal:8001": 1
+        "host.docker.internal:8002": 1
+        "host.docker.internal:8003": 1
+    plugins:
+      ip-restriction:
+        whitelist:
+          - "127.0.0.1"
+          - "172.16.0.0/12"  # Docker network range
+          - "10.0.0.0/8"     # Private network range
+      prometheus: {}
+
+  # ===== 可观察性演示路由 =====
+  - id: 99
+    name: "observability-demo"
+    desc: "可观察性功能演示路由"
+    uri: "/api/v1/demo/metrics"
+    methods:
+      - GET
+      - POST
+    upstream:
+      type: roundrobin
+      nodes:
+        "host.docker.internal:8001": 1  # 使用用户服务健康检查
+    plugins:
+      # OpenTelemetry分布式追踪
+      opentelemetry:
+        sampler:
+          name: always_on  # 总是采样，演示用
+      # Prometheus指标收集
+      prometheus:
+        prefer_name: true
+      # 请求ID生成
+      request-id:
+        header_name: "X-Request-ID"
+        include_in_response: true
+      # 限流保护
+      limit-req:
+        rate: 100
+        burst: 50
+        rejected_code: 429
+      # CORS
+      cors:
+        allow_origins: "*"
+        allow_methods: "GET,POST,OPTIONS"
+        allow_headers: "*"
+        max_age: 3600
+
+#END

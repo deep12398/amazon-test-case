@@ -1,0 +1,189 @@
+# Prometheus°UÄ - „¡—8(åâåĞØ'ı
+
+groups:
+  # API°UÄ
+  - name: api_metrics
+    interval: 30s
+    rules:
+      # Ï*¡„÷B‡
+      - record: amazon_tracker:api_requests_per_second
+        expr: rate(amazon_tracker_api_requests_total[1m])
+
+      # Ï*¡„ï‡
+      - record: amazon_tracker:api_error_rate
+        expr: rate(amazon_tracker_api_requests_total{status_code=~"4..|5.."}[5m]) / rate(amazon_tracker_api_requests_total[5m])
+
+      # Ï*ï¹„sGÍ”öô
+      - record: amazon_tracker:api_response_time_avg
+        expr: rate(amazon_tracker_api_request_duration_seconds_sum[5m]) / rate(amazon_tracker_api_request_duration_seconds_count[5m])
+
+      # Ï*ï¹„95MÍ”öô
+      - record: amazon_tracker:api_response_time_p95
+        expr: histogram_quantile(0.95, rate(amazon_tracker_api_request_duration_seconds_bucket[5m]))
+
+      # Ï*ï¹„99MÍ”öô
+      - record: amazon_tracker:api_response_time_p99
+        expr: histogram_quantile(0.99, rate(amazon_tracker_api_request_duration_seconds_bucket[5m]))
+
+  # ¡°UÄ
+  - name: business_metrics
+    interval: 60s
+    rules:
+      # Ï*ß7„§Á;p
+      - record: amazon_tracker:products_total_by_tenant
+        expr: sum by (tenant_id) (amazon_tracker_products_total)
+
+      # Ï*ß7„;Ã(7p
+      - record: amazon_tracker:active_users_by_tenant
+        expr: sum by (tenant_id) (amazon_tracker_active_users)
+
+      # Ïö„(7èŒp
+      - record: amazon_tracker:user_registrations_per_hour
+        expr: rate(amazon_tracker_user_registrations_total[1h]) * 3600
+
+      # Ïö„,kû¡p
+      - record: amazon_tracker:crawl_tasks_per_hour
+        expr: rate(amazon_tracker_crawl_tasks_total[1h]) * 3600
+
+      # Ï*ß7„,kŸ‡
+      - record: amazon_tracker:crawl_success_rate_by_tenant
+        expr: |
+          sum by (tenant_id) (rate(amazon_tracker_crawl_tasks_total{status="success"}[10m])) /
+          sum by (tenant_id) (rate(amazon_tracker_crawl_tasks_total[10m]))
+
+      # Ï*ß7„pn¹6Æ‡
+      - record: amazon_tracker:data_points_per_minute_by_tenant
+        expr: rate(amazon_tracker_data_points_collected_total[5m]) * 60
+
+  # ûßD°UÄ
+  - name: system_metrics
+    interval: 30s
+    rules:
+      # sGCPU(‡
+      - record: amazon_tracker:cpu_usage_avg
+        expr: avg by (service) (amazon_tracker_cpu_usage_percent)
+
+      # sG…X(‡
+      - record: amazon_tracker:memory_usage_avg
+        expr: avg by (service) (amazon_tracker_memory_usage_bytes)
+
+      # ;SûßCPU(‡
+      - record: amazon_tracker:system_cpu_usage
+        expr: avg (amazon_tracker_cpu_usage_percent)
+
+      # ;Sûß…X(‡
+      - record: amazon_tracker:system_memory_usage
+        expr: sum (amazon_tracker_memory_usage_bytes)
+
+  # pn“°UÄ
+  - name: database_metrics
+    interval: 30s
+    rules:
+      # pn“åâsGöß
+      - record: amazon_tracker:db_query_duration_avg
+        expr: rate(amazon_tracker_db_query_duration_seconds_sum[5m]) / rate(amazon_tracker_db_query_duration_seconds_count[5m])
+
+      # pn“åâ95Möß
+      - record: amazon_tracker:db_query_duration_p95
+        expr: histogram_quantile(0.95, rate(amazon_tracker_db_query_duration_seconds_bucket[5m]))
+
+      # ÏÒpn“åâp
+      - record: amazon_tracker:db_queries_per_second
+        expr: rate(amazon_tracker_db_queries_total[1m])
+
+      # pn“ï‡
+      - record: amazon_tracker:db_error_rate
+        expr: rate(amazon_tracker_db_queries_total{status="error"}[5m]) / rate(amazon_tracker_db_queries_total[5m])
+
+  # X°UÄ
+  - name: cache_metrics
+    interval: 30s
+    rules:
+      # X}-‡
+      - record: amazon_tracker:cache_hit_rate
+        expr: |
+          rate(amazon_tracker_cache_hits_total[5m]) /
+          (rate(amazon_tracker_cache_hits_total[5m]) + rate(amazon_tracker_cache_misses_total[5m]))
+
+      # XÍ\sGöß
+      - record: amazon_tracker:cache_operation_duration_avg
+        expr: rate(amazon_tracker_cache_operations_duration_seconds_sum[5m]) / rate(amazon_tracker_cache_operations_duration_seconds_count[5m])
+
+      # ÏÒXÍ\p
+      - record: amazon_tracker:cache_operations_per_second
+        expr: rate(amazon_tracker_cache_hits_total[1m]) + rate(amazon_tracker_cache_misses_total[1m])
+
+  # °UÄ
+  - name: queue_metrics
+    interval: 60s
+    rules:
+      # ‡
+      - record: amazon_tracker:queue_processing_rate
+        expr: rate(amazon_tracker_queue_items_processed_total[5m])
+
+      # sGöô
+      - record: amazon_tracker:queue_processing_duration_avg
+        expr: rate(amazon_tracker_queue_processing_duration_seconds_sum[5m]) / rate(amazon_tracker_queue_processing_duration_seconds_count[5m])
+
+      # ï‡
+      - record: amazon_tracker:queue_error_rate
+        expr: rate(amazon_tracker_queue_items_processed_total{status="error"}[5m]) / rate(amazon_tracker_queue_items_processed_total[5m])
+
+  # AI°UÄ
+  - name: ai_metrics
+    interval: 60s
+    rules:
+      # Ï*ß7„AI÷B‡
+      - record: amazon_tracker:ai_analysis_requests_per_hour_by_tenant
+        expr: rate(amazon_tracker_ai_analysis_requests_total[1h]) * 3600
+
+      # AIsGíöô
+      - record: amazon_tracker:ai_analysis_duration_avg
+        expr: rate(amazon_tracker_ai_analysis_duration_seconds_sum[10m]) / rate(amazon_tracker_ai_analysis_duration_seconds_count[10m])
+
+      # Ï*ß7„token(‡
+      - record: amazon_tracker:ai_tokens_per_hour_by_tenant
+        expr: rate(amazon_tracker_ai_tokens_used_total[1h]) * 3600
+
+  # ¥J°UÄ
+  - name: report_metrics
+    interval: 60s
+    rules:
+      # Ïö„¥Jp
+      - record: amazon_tracker:reports_per_hour
+        expr: rate(amazon_tracker_reports_generated_total[1h]) * 3600
+
+      # ¥JsGöô
+      - record: amazon_tracker:report_generation_duration_avg
+        expr: rate(amazon_tracker_report_generation_duration_seconds_sum[10m]) / rate(amazon_tracker_report_generation_duration_seconds_count[10m])
+
+      # 	<Ä„¥J‡
+      - record: amazon_tracker:reports_by_format_per_hour
+        expr: rate(amazon_tracker_reports_generated_total[1h]) * 3600
+
+  # SLA°UÄ
+  - name: sla_metrics
+    interval: 300s  # 5Ÿ
+    rules:
+      # 99.9% ï('
+      - record: amazon_tracker:availability_99_9
+        expr: |
+          (
+            sum(rate(amazon_tracker_api_requests_total{status_code!~"5.."}[5m])) /
+            sum(rate(amazon_tracker_api_requests_total[5m]))
+          ) >= 0.999
+
+      # 95Möß < 1Ò„¾‡
+      - record: amazon_tracker:latency_sla_compliance
+        expr: |
+          (
+            histogram_quantile(0.95, rate(amazon_tracker_api_request_duration_seconds_bucket[5m])) < 1
+          )
+
+      # ï‡ < 1%„¾‡
+      - record: amazon_tracker:error_rate_sla_compliance
+        expr: |
+          (
+            sum(rate(amazon_tracker_api_requests_total{status_code=~"5.."}[5m])) /
+            sum(rate(amazon_tracker_api_requests_total[5m]))
+          ) < 0.01

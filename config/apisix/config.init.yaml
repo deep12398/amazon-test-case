@@ -1,0 +1,45 @@
+# APISIX Temporary Configuration for Initialization
+deployment:
+  role: traditional
+
+  etcd:
+    host:
+      - "http://etcd:2379"
+    prefix: "/apisix"
+    timeout: 30
+
+apisix:
+  node_listen: 9080
+  enable_admin: true
+  enable_dev_mode: true
+
+  # Admin API Configuration
+  admin_key:
+    - name: "admin"
+      key: "dev-admin-key-123"
+      role: admin
+
+# Essential plugins
+plugins:
+  - opentelemetry
+  - prometheus
+  - request-id
+  - cors
+  - limit-req
+  - zipkin
+
+# Plugin configuration
+plugin_attr:
+  opentelemetry:
+    resource:
+      service.name: "APISIX-Gateway"
+      service.version: "1.0.0"
+    collector:
+      address: "jaeger:4318"
+      request_timeout: 3
+    batch_span_processor:
+      drop_on_queue_full: false
+      max_queue_size: 1024
+      batch_timeout: 2
+      inactive_timeout: 1
+      max_export_batch_size: 16

@@ -1,0 +1,74 @@
+{
+  "测试时间": "2025-09-14 22:37:58",
+  "用户服务地址": "http://localhost:8001",
+  "核心服务地址": "http://localhost:8003",
+  "测试用户信息": {
+    "邮箱": "admin@demo.com",
+    "密码": "admin123456",
+    "用户名": "admin",
+    "全名": "Demo Admin",
+    "说明": "使用Demo账号以访问已有的产品数据"
+  },
+  "JWT Token信息": {
+    "有效期": "30天",
+    "Token前缀": "eyJhbGciOiJIUzI1NiIs..."
+  },
+  "用户信息": {
+    "id": 4,
+    "email": "admin@demo.com",
+    "username": "admin",
+    "full_name": "Demo Admin",
+    "tenant_id": "tenant_V9wVDY2-fsuiFWmuzPi7Nw",
+    "is_super_admin": false,
+    "is_email_verified": false,
+    "status": "pending_verification",
+    "roles": [],
+    "permissions": [],
+    "last_login_at": "2025-09-14T14:37:53.434237Z",
+    "preferences": {}
+  },
+  "API接口调用记录": [
+    {
+      "接口": "POST /api/v1/auth/register",
+      "用途": "用户注册",
+      "服务": "User Service"
+    },
+    {
+      "接口": "POST /api/v1/auth/login",
+      "用途": "用户登录",
+      "服务": "User Service"
+    },
+    {
+      "接口": "POST /api/v1/reports/generate",
+      "用途": "生成报告",
+      "服务": "Core Service"
+    },
+    {
+      "接口": "GET /api/v1/reports/{report_id}/preview",
+      "用途": "预览报告",
+      "服务": "Core Service"
+    }
+  ],
+  "报告特点": {
+    "格式": "Markdown",
+    "包含内容": [
+      "主产品vs各竞品的价格差异",
+      "BSR排名差距",
+      "评分优劣势",
+      "产品特色对比(从产品bullet points提取)"
+    ]
+  },
+  "报告统计": {
+    "字符数": 4721,
+    "行数": 91,
+    "包含章节": [
+      "主产品信息",
+      "竞品信息",
+      "价格对比分析",
+      "BSR排名对比分析",
+      "评分优劣势分析",
+      "产品特色对比",
+      "分析总结"
+    ]
+  }
+}

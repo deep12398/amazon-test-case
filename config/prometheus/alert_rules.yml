@@ -1,0 +1,137 @@
+# PrometheusJfÄ
+
+groups:
+  # ¡e·Jf
+  - name: service_health
+    rules:
+      - alert: ServiceDown
+        expr: up == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Service {{ $labels.job }} is down"
+          description: "Service {{ $labels.job }} on instance {{ $labels.instance }} has been down for more than 30 seconds."
+
+      - alert: HighErrorRate
+        expr: (rate(amazon_tracker_api_requests_total{status_code=~"5.."}[5m]) / rate(amazon_tracker_api_requests_total[5m])) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High error rate for {{ $labels.service }}"
+          description: "Error rate is {{ $value | humanizePercentage }} for service {{ $labels.service }}."
+
+  # 'ýJf
+  - name: performance
+    rules:
+      - alert: HighLatency
+        expr: histogram_quantile(0.95, rate(amazon_tracker_api_request_duration_seconds_bucket[5m])) > 5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High latency for {{ $labels.service }}"
+          description: "95th percentile latency is {{ $value }}s for service {{ $labels.service }}."
+
+      - alert: HighCPUUsage
+        expr: amazon_tracker_cpu_usage_percent > 80
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage for {{ $labels.service }}"
+          description: "CPU usage is {{ $value }}% for service {{ $labels.service }}."
+
+      - alert: HighMemoryUsage
+        expr: amazon_tracker_memory_usage_bytes > 1073741824  # 1GB
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage for {{ $labels.service }}"
+          description: "Memory usage is {{ $value | humanizeBytes }} for service {{ $labels.service }}."
+
+  # ¡Jf
+  - name: business_metrics
+    rules:
+      - alert: LowCrawlSuccessRate
+        expr: amazon_tracker_crawl_success_rate < 0.8
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low crawl success rate for tenant {{ $labels.tenant_id }}"
+          description: "Crawl success rate is {{ $value | humanizePercentage }} for tenant {{ $labels.tenant_id }}."
+
+      - alert: HighQueueSize
+        expr: amazon_tracker_queue_size > 1000
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High queue size for {{ $labels.queue_name }}"
+          description: "Queue {{ $labels.queue_name }} has {{ $value }} items pending."
+
+      - alert: LongRunningCrawlTask
+        expr: amazon_tracker_crawl_duration_seconds > 1800  # 30Ÿ
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Long running crawl task"
+          description: "Crawl task for tenant {{ $labels.tenant_id }} has been running for {{ $value | humanizeDuration }}."
+
+  # pn“Jf
+  - name: database
+    rules:
+      - alert: DatabaseConnectionsHigh
+        expr: amazon_tracker_db_connections_active > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High database connections"
+          description: "Number of active database connections is {{ $value }}."
+
+      - alert: SlowDatabaseQueries
+        expr: histogram_quantile(0.95, rate(amazon_tracker_db_query_duration_seconds_bucket[5m])) > 1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Slow database queries"
+          description: "95th percentile query duration is {{ $value }}s for {{ $labels.operation }} on {{ $labels.table }}."
+
+  # XJf
+  - name: cache
+    rules:
+      - alert: LowCacheHitRate
+        expr: (rate(amazon_tracker_cache_hits_total[5m]) / (rate(amazon_tracker_cache_hits_total[5m]) + rate(amazon_tracker_cache_misses_total[5m]))) < 0.7
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low cache hit rate"
+          description: "Cache hit rate is {{ $value | humanizePercentage }} for {{ $labels.cache_type }}."
+
+  # AIJf
+  - name: ai_analysis
+    rules:
+      - alert: HighAITokenUsage
+        expr: rate(amazon_tracker_ai_tokens_used_total[1h]) > 10000
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High AI token usage for tenant {{ $labels.tenant_id }}"
+          description: "Token usage rate is {{ $value }} tokens/hour for tenant {{ $labels.tenant_id }} using model {{ $labels.model }}."
+
+      - alert: LongRunningAIAnalysis
+        expr: amazon_tracker_ai_analysis_duration_seconds > 600  # 10Ÿ
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Long running AI analysis"
+          description: "AI analysis of type {{ $labels.analysis_type }} has been running for {{ $value | humanizeDuration }}."

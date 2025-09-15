@@ -1,0 +1,43 @@
+{
+  "name": "n6-agent-be MCP Configuration",
+  "version": "1.0.0",
+  "mcpServers": {
+    "google-search": {
+      "command": "node",
+      "args": ["/Users/elias/mcp-servers/google-search/dist/index.js"],
+      "env": {
+        "GOOGLE_API_KEY": "AIzaSyDFRYBztEPtB2uXxX_mmluh6LztmGejvs0",
+        "GOOGLE_SEARCH_ENGINE_ID": "a38ab8b6a88cc4a02"
+      }
+    },
+    "github": {
+      "command": "/Users/elias/mcp-servers/github/github-mcp-server",
+      "args": ["stdio"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "your_github_token_here"
+      }
+    },
+    "exa-search": {
+      "command": "/Users/elias/.nvm/versions/node/v18.20.8/lib/node_modules/exa-mcp-server/.smithery/index.cjs",
+      "args": [
+        "--tools=web_search_exa,company_research,crawling,deep_researcher_start,deep_researcher_check"
+      ],
+      "env": {
+        "EXA_API_KEY": "Jikso2EfO3noClRZp70X1KThm8VuumR5HbqSfpwMJ7xA5"
+      }
+    },
+    "firecrawl": {
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp"],
+      "env": {
+        "FIRECRAWL_API_KEY": "fc-afdc8a3cbf0e4ee398a751c2ca8dd86e"
+      }
+    },
+    "serena": {
+      "transport": {
+        "type": "sse",
+        "url": "http://127.0.0.1:24284/sse"
+      }
+    }
+  }
+}

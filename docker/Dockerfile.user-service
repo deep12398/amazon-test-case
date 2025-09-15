@@ -1,0 +1,66 @@
+# (7° Dockerfile
+FROM python:3.11-slim
+
+# ænØÉÿœ
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    SERVICE_NAME=user-service \
+    PORT=8001
+
+# â≈˚ﬂùV
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+        libpq-dev \
+        curl \
+        netcat-openbsd \
+    && rm -rf /var/lib/apt/lists/*
+
+# â≈UV°h
+RUN pip install uv
+
+# ˙î((7
+RUN groupadd -r appuser && useradd -r -g appuser appuser
+
+# ˙î(ÓUåÂ◊ÓU
+WORKDIR /app
+RUN mkdir -p /app/logs && chown -R appuser:appuser /app
+
+# 6ùVáˆ
+COPY pyproject.toml uv.lock* ./
+
+# â≈PythonùV
+RUN uv venv .venv \
+    && . .venv/bin/activate \
+    && uv pip sync --only-production pyproject.toml
+
+# 6î(„
+COPY amazon_tracker ./amazon_tracker/
+COPY scripts ./scripts/
+COPY alembic.ini ./
+COPY alembic ./alembic/
+
+# ænCP
+RUN chown -R appuser:appuser /app
+
+# b0î((7
+USER appuser
+
+# ¿;ZﬂØÉ
+ENV PATH="/app/.venv/bin:$PATH"
+
+# e∑¿Â
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost:${PORT}/health || exit 1
+
+# ¥2Ô„
+EXPOSE ${PORT}
+
+# /®,
+COPY docker/entrypoint.user-service.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["uvicorn", "amazon_tracker.services.user_service.main:app", "--host", "0.0.0.0", "--port", "8001"]

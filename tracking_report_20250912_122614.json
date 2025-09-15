@@ -1,0 +1,69 @@
+{
+  "report_date": "2025-09-12T12:26:14.743100",
+  "total_products": 6,
+  "successful_crawls": 3,
+  "price_alerts": 0,
+  "products_summary": [
+    {
+      "asin": "B07Q9MJKBV",
+      "title": "Bose Headphones 700, Noise Cancelling Bluetooth Over-Ear Wir...",
+      "brand": "Bose",
+      "price": 243.99,
+      "rating": 4.5,
+      "reviews": 36521,
+      "availability": ""
+    },
+    {
+      "asin": "B08PZHYWJS",
+      "title": "Apple AirPods Max Wireless Over-Ear Headphones, Active Noise...",
+      "brand": "Apple",
+      "price": 499.0,
+      "rating": 4.5,
+      "reviews": 8170,
+      "availability": ""
+    },
+    {
+      "asin": "B098FKXT8L",
+      "title": "Bose QuietComfort 45 Bluetooth Wireless Noise Cancelling Hea...",
+      "brand": "Bose",
+      "price": null,
+      "rating": 4.6,
+      "reviews": 16943,
+      "availability": ""
+    },
+    {
+      "asin": "B08WM3LMJF",
+      "title": "JBL Tune 510BT - Bluetooth headphones with up to 40 hours ba...",
+      "brand": "JBL",
+      "price": 29.95,
+      "rating": 4.5,
+      "reviews": 82597,
+      "availability": ""
+    },
+    {
+      "asin": "B07G4MNFS1",
+      "title": "Sony WH1000XM3 Noise Cancelling Headphones, Wireless Bluetoo...",
+      "brand": "Sony",
+      "price": null,
+      "rating": 4.6,
+      "reviews": 21704,
+      "availability": ""
+    },
+    {
+      "asin": "B0756CYWWD",
+      "title": "Bose QuietComfort 35 II Wireless Bluetooth Headphones, Noise...",
+      "brand": "Bose",
+      "price": null,
+      "rating": 4.7,
+      "reviews": 67967,
+      "availability": ""
+    }
+  ],
+  "price_changes": [],
+  "data_quality": {
+    "with_price": 3,
+    "with_rating": 6,
+    "with_reviews": 6,
+    "with_bsr": 0
+  }
+}

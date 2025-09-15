@@ -1,0 +1,441 @@
+# §¯ƒ Docker Compose Mn
+version: '3.8'
+
+networks:
+  amazon-tracker-prod:
+    driver: bridge
+  internal:
+    driver: bridge
+    internal: true
+
+volumes:
+  postgres_prod_data:
+    driver: local
+  redis_prod_data:
+    driver: local
+  etcd_prod_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+  app_logs:
+    driver: local
+
+services:
+  # ===== pn“¡ =====
+  postgres:
+    image: postgres:15-alpine
+    container_name: amazon-tracker-postgres-prod
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_HOST_AUTH_METHOD: ${POSTGRES_AUTH_METHOD}
+    ports:
+      - "127.0.0.1:5432:5432"  # êÑš,0
+    volumes:
+      - postgres_prod_data:/var/lib/postgresql/data
+      - ./config/postgres/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./config/postgres/pg_hba.conf:/etc/postgresql/pg_hba.conf
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+        reservations:
+          memory: 1G
+          cpus: '0.5'
+
+  # ===== RedisX =====
+  redis:
+    image: redis:7-alpine
+    container_name: amazon-tracker-redis-prod
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - redis_prod_data:/data
+      - ./config/redis/redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "redis-cli", "--no-auth-warning", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+
+  # ===== etcd (APISIXMnX¨) =====
+  etcd:
+    image: bitnami/etcd:latest
+    container_name: amazon-tracker-etcd-prod
+    environment:
+      ETCD_ENABLE_V2: "true"
+      ETCD_ROOT_PASSWORD: ${ETCD_ROOT_PASSWORD}
+      ETCD_ADVERTISE_CLIENT_URLS: "http://etcd:2379"
+      ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: "http://etcd:2380"
+      ETCD_LISTEN_PEER_URLS: "http://0.0.0.0:2380"
+      ETCD_INITIAL_CLUSTER: "node1=http://etcd:2380"
+    ports:
+      - "127.0.0.1:2379:2379"
+    volumes:
+      - etcd_prod_data:/bitnami/etcd
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "etcdctl", "--user", "root:${ETCD_ROOT_PASSWORD}", "endpoint", "health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+
+  # ===== APISIX APIQs =====
+  apisix:
+    image: apache/apisix:latest
+    container_name: amazon-tracker-apisix-prod
+    environment:
+      APISIX_ETCD_HOST: etcd
+      APISIX_ETCD_PREFIX: "/apisix"
+    ports:
+      - "80:9080"     # HTTP
+      - "443:9443"    # HTTPS
+      - "127.0.0.1:9180:9180"  # Admin API (Å,0)
+    volumes:
+      - ./config/apisix/config.prod.yaml:/usr/local/apisix/conf/config.yaml
+      - ./config/apisix/ssl:/usr/local/apisix/conf/ssl
+      - app_logs:/usr/local/apisix/logs
+    depends_on:
+      etcd:
+        condition: service_healthy
+    networks:
+      - amazon-tracker-prod
+      - internal
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9080/apisix/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+
+  # ===== ”(¡ =====
+  user-service:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.user-service
+    container_name: amazon-tracker-user-service-prod
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/0
+      JWT_SECRET: ${JWT_SECRET}
+      SENTRY_DSN: ${USER_SERVICE_SENTRY_DSN}
+      JAEGER_AGENT_HOST: jaeger
+    volumes:
+      - app_logs:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.5'
+
+  core-service:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.core-service
+    container_name: amazon-tracker-core-service-prod
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/1
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      SENTRY_DSN: ${CORE_SERVICE_SENTRY_DSN}
+      JAEGER_AGENT_HOST: jaeger
+    volumes:
+      - app_logs:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+
+  crawler-service:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.crawler-service
+    container_name: amazon-tracker-crawler-service-prod
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/2
+      CELERY_BROKER_URL: redis://:${REDIS_PASSWORD}@redis:6379/3
+      APIFY_TOKEN: ${APIFY_TOKEN}
+      AWS_SQS_URL: ${AWS_SQS_URL}
+      SENTRY_DSN: ${CRAWLER_SERVICE_SENTRY_DSN}
+      JAEGER_AGENT_HOST: jaeger
+    volumes:
+      - app_logs:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    restart: unless-stopped
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.5'
+
+  # ===== û¡ =====
+  celery-worker:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.crawler-service
+    container_name: amazon-tracker-celery-worker-prod
+    command: ["celery", "-A", "amazon_tracker.services.crawler_service.celery_app", "worker", "--loglevel=info", "--concurrency=4"]
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/2
+      CELERY_BROKER_URL: redis://:${REDIS_PASSWORD}@redis:6379/3
+      APIFY_TOKEN: ${APIFY_TOKEN}
+      SENTRY_DSN: ${CRAWLER_SERVICE_SENTRY_DSN}
+    volumes:
+      - app_logs:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - internal
+    restart: unless-stopped
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.75'
+
+  celery-beat:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.crawler-service
+    container_name: amazon-tracker-celery-beat-prod
+    command: ["celery", "-A", "amazon_tracker.services.crawler_service.celery_app", "beat", "--loglevel=info"]
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/2
+      CELERY_BROKER_URL: redis://:${REDIS_PASSWORD}@redis:6379/3
+      SENTRY_DSN: ${CRAWLER_SERVICE_SENTRY_DSN}
+    volumes:
+      - app_logs:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - internal
+    restart: unless-stopped
+
+  # ===== Ñ§¡ =====
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: amazon-tracker-prometheus-prod
+    ports:
+      - "127.0.0.1:9090:9090"
+    volumes:
+      - ./config/prometheus/prometheus.prod.yml:/etc/prometheus/prometheus.yml
+      - ./config/prometheus/alert_rules.yml:/etc/prometheus/alert_rules.yml
+      - ./config/prometheus/recording_rules.yml:/etc/prometheus/recording_rules.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=90d'
+      - '--storage.tsdb.retention.size=50GB'
+      - '--web.enable-lifecycle'
+      - '--web.enable-admin-api'
+      - '--alertmanager.notification-queue-capacity=1000'
+    networks:
+      - internal
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: amazon-tracker-grafana-prod
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_DATABASE_TYPE: postgres
+      GF_DATABASE_HOST: postgres:5432
+      GF_DATABASE_NAME: ${POSTGRES_DB}
+      GF_DATABASE_USER: ${POSTGRES_USER}
+      GF_DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
+      GF_SESSION_PROVIDER: postgres
+      GF_SESSION_PROVIDER_CONFIG: "user=${POSTGRES_USER} password=${POSTGRES_PASSWORD} host=postgres port=5432 dbname=${POSTGRES_DB} sslmode=disable"
+    volumes:
+      - ./config/grafana/grafana.prod.ini:/etc/grafana/grafana.ini
+      - ./config/grafana/provisioning:/etc/grafana/provisioning
+      - ./config/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - grafana_data:/var/lib/grafana
+      - app_logs:/var/log/grafana
+    depends_on:
+      prometheus:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+    networks:
+      - internal
+    restart: unless-stopped
+
+  # ===== ý* =====
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: amazon-tracker-jaeger-prod
+    ports:
+      - "127.0.0.1:16686:16686"  # Jaeger UI
+      - "127.0.0.1:14250:14250"  # gRPC
+    environment:
+      COLLECTOR_OTLP_ENABLED: true
+      SPAN_STORAGE_TYPE: badger
+      BADGER_EPHEMERAL: false
+      BADGER_DIRECTORY_VALUE: /badger/data
+      BADGER_DIRECTORY_KEY: /badger/key
+    volumes:
+      - ./data/jaeger:/badger
+    networks:
+      - internal
+    restart: unless-stopped
+
+  # ===== å×6Æ =====
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:8.11.0
+    container_name: amazon-tracker-filebeat-prod
+    user: root
+    volumes:
+      - ./config/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - app_logs:/var/log/apps:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      ELASTICSEARCH_HOST: ${ELASTICSEARCH_HOST}
+      ELASTICSEARCH_USERNAME: ${ELASTICSEARCH_USERNAME}
+      ELASTICSEARCH_PASSWORD: ${ELASTICSEARCH_PASSWORD}
+    networks:
+      - internal
+    restart: unless-stopped
+    depends_on:
+      - user-service
+      - core-service
+      - crawler-service
+
+  # ===== ý¡ =====
+  backup:
+    image: postgres:15-alpine
+    container_name: amazon-tracker-backup-prod
+    environment:
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./backups:/backups
+      - ./scripts/backup.sh:/backup.sh
+    entrypoint: ["/bin/sh"]
+    command: ["-c", "while true; do sleep 24h; /backup.sh; done"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - internal
+    restart: unless-stopped
+
+  # ===== ÍãŒSSLÈÓ =====
+  nginx:
+    image: nginx:alpine
+    container_name: amazon-tracker-nginx-prod
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./config/nginx/ssl:/etc/nginx/ssl
+      - app_logs:/var/log/nginx
+    depends_on:
+      - apisix
+    networks:
+      - amazon-tracker-prod
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.25'

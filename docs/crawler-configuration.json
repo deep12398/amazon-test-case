@@ -1,0 +1,206 @@
+{
+  "crawler_configurations": {
+    "primary_crawler": {
+      "actor_id": "ZhSGsaq9MHRnWtStl",
+      "actor_name": "junglee/amazon-asins-scraper",
+      "description": "主要爬虫 - 获取产品详细信息",
+      "capabilities": [
+        "产品基础信息 (ASIN, 标题, 品牌)",
+        "价格信息 (当前价格, Buy Box价格)",
+        "BSR排名数据 (94.6%可用率)",
+        "评价数据 (评分, 评论数)",
+        "产品特征 (features数组)",
+        "详细规格 (productDetails数组)",
+        "卖家信息 (seller, fulfillment)",
+        "库存状态 (availability)"
+      ],
+      "input_template": {
+        "asins": [],
+        "amazonDomain": "amazon.com",
+        "proxyCountry": "AUTO_SELECT_PROXY_COUNTRY",
+        "useCaptchaSolver": false
+      },
+      "rate_limits": {
+        "max_concurrent": 10,
+        "delay_between_requests": 1000,
+        "retry_attempts": 3
+      },
+      "output_sample": {
+        "asin": "B0D1XD1ZV3",
+        "title": "Apple AirPods Pro 2 Wireless Earbuds...",
+        "brand": "Apple",
+        "price": {"value": 199, "currency": "$"},
+        "stars": 4.6,
+        "reviewsCount": 37658,
+        "bestsellerRanks": [
+          {
+            "rank": 1,
+            "category": "Earbud Headphones",
+            "url": "https://www.amazon.com/gp/bestsellers/electronics/12097479011/"
+          }
+        ],
+        "features": [
+          "Active Noise Cancellation blocks outside noise",
+          "Transparency mode for hearing your surroundings"
+        ],
+        "productDetails": [
+          {"name": "Connectivity Technology", "value": "Wireless, Bluetooth"},
+          {"name": "Battery Life", "value": "Up to 6 hours"}
+        ]
+      }
+    },
+    "bsr_crawler": {
+      "actor_id": "junglee/amazon-bestsellers",
+      "actor_name": "Amazon Bestsellers Scraper",
+      "description": "BSR专用爬虫 - 获取排行榜数据",
+      "capabilities": [
+        "BSR排名位置 (position字段)",
+        "类别信息 (categoryName, categoryFullName)",
+        "基础产品信息 (ASIN, 名称, 价格)",
+        "用户评价 (stars, reviewsCount)",
+        "产品图片 (thumbnailUrl)"
+      ],
+      "input_template": {
+        "categoryUrls": [],
+        "maxItems": 50,
+        "country": "US"
+      },
+      "category_urls": {
+        "earbud_headphones": "https://www.amazon.com/Best-Sellers-Electronics-Headphones/zgbs/electronics/12097479011",
+        "over_ear_headphones": "https://www.amazon.com/Best-Sellers-Electronics-Over-Ear-Headphones/zgbs/electronics/12097478011",
+        "electronics_general": "https://www.amazon.com/Best-Sellers-Electronics/zgbs/electronics"
+      },
+      "output_sample": {
+        "name": "Apple AirPods Pro 2 Wireless Earbuds...",
+        "url": "https://www.amazon.com/dp/B0D1XD1ZV3",
+        "asin": "B0D1XD1ZV3",
+        "position": 1,
+        "price": {"value": 199, "currency": "$"},
+        "stars": 4.6,
+        "reviewsCount": 37658,
+        "thumbnailUrl": "https://images-na.ssl-images-amazon.com/...",
+        "categoryName": "Earbud Headphones",
+        "categoryFullName": "Best Sellers in Earbud & In-Ear Headphones"
+      }
+    },
+    "alternative_crawler": {
+      "actor_id": "7KgyOHHEiPEcilZXM",
+      "actor_name": "Amazon Product Details Scraper",
+      "description": "备用爬虫 - 详细产品信息",
+      "capabilities": [
+        "详细价格信息 (price, retailPrice, buyBoxUsed)",
+        "卖家详情 (soldBy, fulfilledBy, sellerId)",
+        "库存信息 (warehouseAvailability)",
+        "产品规格 (productDetails数组)",
+        "客户评价 (reviews数组)",
+        "产品变体 (variations数组)"
+      ],
+      "input_template": {
+        "urls": []
+      },
+      "use_cases": [
+        "主爬虫失败时的备用方案",
+        "获取更详细的卖家信息",
+        "深度价格分析 (多卖家对比)"
+      ]
+    }
+  },
+  "crawling_strategy": {
+    "data_collection_flow": [
+      {
+        "step": 1,
+        "action": "使用BSR爬虫获取品类Top 50产品",
+        "crawler": "junglee/amazon-bestsellers",
+        "purpose": "发现热门产品和BSR排名"
+      },
+      {
+        "step": 2,
+        "action": "从Top 50中选择20个代表性产品",
+        "criteria": [
+          "不同价格区间分布",
+          "主流品牌覆盖",
+          "不同产品类型 (入耳/头戴)",
+          "评价数量充足 (>1000评论)"
+        ]
+      },
+      {
+        "step": 3,
+        "action": "使用主爬虫获取详细产品信息",
+        "crawler": "ZhSGsaq9MHRnWtStl",
+        "data_points": [
+          "完整价格信息",
+          "详细BSR排名",
+          "产品特征和规格",
+          "用户评价统计"
+        ]
+      },
+      {
+        "step": 4,
+        "action": "数据清洗和标准化",
+        "processes": [
+          "价格格式统一",
+          "评分数据验证",
+          "BSR排名层级解析",
+          "产品特征标准化"
+        ]
+      }
+    ],
+    "update_schedule": {
+      "daily_updates": [
+        "价格数据更新",
+        "BSR排名更新",
+        "库存状态检查"
+      ],
+      "weekly_updates": [
+        "评价数据更新",
+        "新产品发现",
+        "异常数据修复"
+      ],
+      "monthly_updates": [
+        "产品特征更新",
+        "规格信息同步",
+        "竞品列表调整"
+      ]
+    }
+  },
+  "data_quality_assurance": {
+    "validation_rules": {
+      "asin_format": "^[A-Z0-9]{10}$",
+      "price_range": {"min": 10, "max": 1000},
+      "rating_range": {"min": 0, "max": 5},
+      "review_count_min": 0,
+      "bsr_rank_min": 1
+    },
+    "data_completeness_requirements": {
+      "critical_fields": [
+        "asin", "title", "price", "brand"
+      ],
+      "important_fields": [
+        "rating", "review_count", "availability"
+      ],
+      "optional_fields": [
+        "bsr_ranks", "features", "product_details"
+      ]
+    },
+    "error_handling": {
+      "missing_bsr": "使用BSR专用爬虫补充",
+      "price_anomaly": "多爬虫验证",
+      "data_inconsistency": "人工审核标记",
+      "crawler_failure": "自动切换备用爬虫"
+    }
+  },
+  "performance_metrics": {
+    "target_kpis": {
+      "data_success_rate": ">95%",
+      "bsr_data_availability": ">90%",
+      "crawling_speed": "<60s per batch",
+      "error_rate": "<5%"
+    },
+    "monitoring_points": [
+      "爬虫成功率",
+      "数据完整性",
+      "响应时间",
+      "成本控制"
+    ]
+  }
+}

@@ -1,0 +1,158 @@
+# 开发环境 Docker Compose 配置
+version: '3.8'
+
+networks:
+  amazon-tracker-dev:
+    driver: bridge
+
+volumes:
+  postgres_dev_data:
+  redis_dev_data:
+  etcd_dev_data:
+
+services:
+  # ===== 数据库服务（已禁用，使用远程Supabase）=====
+  # postgres:
+  #   image: postgres:15-alpine
+  #   container_name: amazon-tracker-postgres-dev
+  #   environment:
+  #     POSTGRES_DB: amazon_tracker_dev
+  #     POSTGRES_USER: dev_user
+  #     POSTGRES_PASSWORD: dev_password
+  #     POSTGRES_HOST_AUTH_METHOD: trust
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_dev_data:/var/lib/postgresql/data
+  #     - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+  #   networks:
+  #     - amazon-tracker-dev
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U dev_user -d amazon_tracker_dev"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+  #   restart: unless-stopped
+
+  # ===== Redis缓存 =====
+  redis:
+    image: redis:7-alpine
+    container_name: amazon-tracker-redis-dev
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_dev_data:/data
+    networks:
+      - amazon-tracker-dev
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # ===== etcd (APISIX配置存储) =====
+  etcd:
+    image: bitnami/etcd:latest
+    container_name: amazon-tracker-etcd-dev
+    environment:
+      ETCD_ENABLE_V2: "true"
+      ALLOW_NONE_AUTHENTICATION: "yes"
+      ETCD_NAME: "default"
+      ETCD_ADVERTISE_CLIENT_URLS: "http://0.0.0.0:2379"
+      ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: "http://0.0.0.0:2380"
+      ETCD_LISTEN_PEER_URLS: "http://0.0.0.0:2380"
+      ETCD_INITIAL_CLUSTER: "default=http://0.0.0.0:2380"
+      ETCD_INITIAL_CLUSTER_STATE: "new"
+    ports:
+      - "2379:2379"
+      - "2380:2380"
+    volumes:
+      - etcd_dev_data:/bitnami/etcd
+    networks:
+      - amazon-tracker-dev
+    healthcheck:
+      test: ["CMD", "etcdctl", "endpoint", "health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # ===== APISIX API网关 =====
+  apisix:
+    image: apache/apisix:latest
+    container_name: amazon-tracker-apisix-dev
+    environment:
+      APISIX_ETCD_HOST: etcd
+    ports:
+      - "9080:9080"   # HTTP端口
+      - "9180:9180"   # Admin API端口
+      - "9443:9443"   # HTTPS端口
+      - "9091:9091"   # Prometheus metrics端口
+    volumes:
+      - ./config/apisix/config.dev.yaml:/usr/local/apisix/conf/config.yaml
+      - ./logs/apisix:/usr/local/apisix/logs
+    depends_on:
+      etcd:
+        condition: service_healthy
+    networks:
+      - amazon-tracker-dev
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9080/apisix/status"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # ===== 监控服务 =====
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: amazon-tracker-prometheus-dev
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./config/prometheus/alert_rules.yml:/etc/prometheus/alert_rules.yml
+      - ./config/prometheus/recording_rules.yml:/etc/prometheus/recording_rules.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    networks:
+      - amazon-tracker-dev
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: amazon-tracker-grafana-dev
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin123
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_PLUGINS_PREINSTALL: grafana-clock-panel
+    # volumes:
+      # - ./config/grafana/grafana.ini:/etc/grafana/grafana.ini
+    depends_on:
+      - prometheus
+    networks:
+      - amazon-tracker-dev
+    restart: unless-stopped
+
+  # ===== 分布式追踪 =====
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: amazon-tracker-jaeger-dev
+    ports:
+      - "16686:16686"  # Jaeger UI
+      - "14250:14250"  # gRPC
+      - "6832:6832/udp"  # UDP
+      - "4317:4317"    # OTLP gRPC
+      - "4318:4318"    # OTLP HTTP
+    environment:
+      COLLECTOR_OTLP_ENABLED: true
+    networks:
+      - amazon-tracker-dev
+    restart: unless-stopped
